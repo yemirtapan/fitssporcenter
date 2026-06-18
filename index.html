@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Push Pull Leg Program</title>
+
+<style>
+:root {
+    --bg-main: #0a0a0c;
+    --bg-card: #141416;
+    --bg-header: #1a1a1e;
+    --bg-summary: #1f1f24;
+    --bg-summary-hover: #28282e;
+    --primary: #00d4ff;
+    --secondary: #00ff9d;
+    --text-muted: #a0a0ab;
+    --border-color: #2a2a32;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-main);
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+header {
+    text-align: center;
+    padding: 25px 20px;
+    background: var(--bg-header);
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+details {
+    background: var(--bg-card);
+    margin-bottom: 20px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+details[open] {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+summary {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--bg-summary);
+    color: var(--primary);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+summary:hover {
+    background: var(--bg-summary-hover);
+}
+
+/* Özel ok ikonu (Custom Arrow) */
+summary::after {
+    content: '➔';
+    font-size: 14px;
+    transition: transform 0.3s ease;
+    transform: rotate(90deg);
+}
+
+details[open] summary::after {
+    transform: rotate(-90deg);
+}
+
+/* Webkit tarayıcıları için varsayılan oku gizleme */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--border-color);
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.exercise:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.exercise img {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.sets {
+    align-self: flex-start;
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(0, 255, 157, 0.1);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 157, 0.2);
+}
+</style>
+</head>
+
+<body>
+
+<header>💪 PUSH / PULL / LEG PROGRAMI</header>
+
+<div class="container">
+
+<details open>
+<summary>Push 1</summary>
+<div class="exercise-list">
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Bench_press.gif"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Incline_dumbbell_press.gif"><div class="info"><h3>Incline Press</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Dumbbell_fly.gif"><div class="info"><h3>Fly</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Shoulder_press.gif"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Lateral_raise.gif"><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Triceps_pushdown.gif"><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Overhead_triceps_extension.gif"><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
+</div>
+</details>
+
+<details>
+<summary>Pull 1</summary>
+<div class="exercise-list">
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Lat_pulldown.gif"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/V_bar_pulldown.gif"><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Single_arm_row.gif"><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Reverse_pec_deck.gif"><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Biceps_curl.gif"><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Machine_curl.gif"><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
+</div>
+</details>
+
+<details>
+<summary>Leg</summary>
+<div class="exercise-list">
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Hack_squat.gif"><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Leg_extension.gif"><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Leg_curl.gif"><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Leg_press.gif"><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Lunge.gif"><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+</div>
+</details>
+
+<details>
+<summary>Push 2</summary>
+<div class="exercise-list">
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Smith_incline_press.gif"><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Bench_press.gif"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Shoulder_press.gif"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Lateral_raise.gif"><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Front_raise.gif"><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Overhead_triceps_extension.gif"><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Triceps_pushdown.gif"><div class="info"><h3>Single Rope Pushdown</h3><div class="sets">4x10-12</div></div></div>
+</div>
+</details>
+
+<details>
+<summary>Pull 2</summary>
+<div class="exercise-list">
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Machine_row.gif"><div class="info"><h3>Machine Row</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Seated_row.gif"><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Lat_pulldown.gif"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Reverse_pec_deck.gif"><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Preacher_curl.gif"><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Hammer_curl.gif"><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
+</div>
+</details>
+
+<details>
+<summary>Leg 2 (Opsiyonel)</summary>
+<div class="exercise-list">
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Hack_squat.gif"><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Leg_extension.gif"><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Leg_curl.gif"><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Leg_press.gif"><div class="info"><h3>Leg Press</h3><div class="sets">4x10-12</div></div></div>
+    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Lunge.gif"><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+</div>
+</details>
+
+</div>
+
+<script>
+// Akordeon mantığı: Bir menü açıldığında diğerlerini otomatik kapatır
+const detailsElements = document.querySelectorAll('details');
+
+detailsElements.forEach((targetDetail) => {
+    targetDetail.addEventListener('click', (e) => {
+        // Sadece summary tıklandığında tetiklenmesi için (içerik tıklamalarını muaf tutar)
+        if (e.target.tagName === 'SUMMARY') {
+            detailsElements.forEach((detail) => {
+                if (detail !== targetDetail) {
+                    detail.removeAttribute('open');
+                }
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
