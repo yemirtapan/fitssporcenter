@@ -400,16 +400,13 @@ summary::-webkit-details-marker {
 <script>
 // Dinamik Seviye Değiştirme Fonksiyonu (Tabs)
 function switchLevel(levelId) {
-    // Tüm içerikleri gizle
     document.querySelectorAll('.program-content').forEach(content => {
         content.classList.remove('active');
     });
-    // Tüm butonların aktifliğini kaldır
     document.querySelectorAll('.level-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     
-    // Seçilen içeriği göster ve butonu aktif yap
     document.getElementById(levelId).classList.add('active');
     event.currentTarget.classList.add('active');
 }
