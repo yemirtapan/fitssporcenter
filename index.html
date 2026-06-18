@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Push Pull Leg Program</title>
+<title>Fits Spor Center</title>
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#00d4ff">
@@ -13,20 +13,19 @@
 
 <style>
 :root {
-    --bg-main: #0a0a0c;
-    --bg-card: #141416;
-    --bg-header: #1a1a1e;
-    --bg-summary: #1f1f24;
-    --bg-summary-hover: #28282e;
+    --bg-main: #08080a;
+    --bg-card: #111114;
+    --bg-header: #16161a;
     --primary: #00d4ff;
+    --primary-glow: rgba(0, 212, 255, 0.2);
     --secondary: #00ff9d;
-    --text-muted: #a0a0ab;
-    --border-color: #2a2a32;
+    --text-muted: #8f8f9d;
+    --border-color: #22222a;
 }
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background: var(--bg-main);
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
@@ -34,45 +33,100 @@ body {
 
 header {
     text-align: center;
-    padding: 25px 20px;
+    padding: 30px 20px;
     background: var(--bg-header);
-    color: var(--primary);
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: 1px;
+    color: #ffffff;
     border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .container {
     max-width: 800px;
-    margin: 30px auto;
-    padding: 0 20px;
-    padding-bottom: 80px; /* Buton için alt boşluk */
+    margin: 0 auto;
+    padding: 25px 20px 100px 20px;
 }
 
+/* --- SEVİYE SEÇİM ALANI (TABS) --- */
+.level-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+    background: #16161a;
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.level-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    padding: 12px 5px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.level-btn:hover {
+    color: #ffffff;
+}
+
+.level-btn.active {
+    background: var(--primary);
+    color: #000000;
+    box-shadow: 0 4px 20px var(--primary-glow);
+}
+
+/* --- PROGRAM İÇERİK ALANLARI --- */
+.program-content {
+    display: none;
+}
+
+.program-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- MODERN AKORDEON (DETAILS) --- */
 details {
     background: var(--bg-card);
-    margin-bottom: 20px;
-    border-radius: 14px;
+    margin-bottom: 16px;
+    border-radius: 16px;
     overflow: hidden;
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 details[open] {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.05);
 }
 
 summary {
-    padding: 20px;
-    font-size: 18px;
-    font-weight: 700;
+    padding: 22px;
+    font-size: 17px;
+    font-weight: 800;
     cursor: pointer;
-    background: var(--bg-summary);
-    color: var(--primary);
+    background: #151519;
+    color: #ffffff;
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -81,18 +135,27 @@ summary {
 }
 
 summary:hover {
-    background: var(--bg-summary-hover);
+    background: #1c1c22;
 }
 
 summary::after {
-    content: '➔';
-    font-size: 14px;
-    transition: transform 0.3s ease;
-    transform: rotate(90deg);
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    margin-right: 5px;
+}
+
+details[open] summary {
+    color: var(--primary);
 }
 
 details[open] summary::after {
-    transform: rotate(-90deg);
+    transform: rotate(-135deg);
+    border-color: var(--primary);
 }
 
 summary::-webkit-details-marker {
@@ -102,71 +165,62 @@ summary::-webkit-details-marker {
 .exercise-list {
     display: flex;
     flex-direction: column;
+    background: var(--bg-card);
 }
 
 .exercise {
     display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 20px;
+    grid-template-columns: 85px 1fr;
+    gap: 18px;
     padding: 16px 20px;
     border-top: 1px solid var(--border-color);
     align-items: center;
-    transition: background 0.2s ease;
-}
-
-.exercise:hover {
-    background: rgba(255, 255, 255, 0.02);
 }
 
 .exercise img {
-    width: 100px;
-    height: 75px;
+    width: 85px;
+    height: 65px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
     background: #000;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.info {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .info h3 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    font-weight: 700;
     color: #ffffff;
+    letter-spacing: 0.3px;
 }
 
 .sets {
-    align-self: flex-start;
+    display: inline-block;
     color: var(--secondary);
-    font-size: 12px;
-    font-weight: 700;
-    background: rgba(0, 255, 157, 0.1);
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 255, 157, 0.2);
+    font-size: 11px;
+    font-weight: 800;
+    background: rgba(0, 255, 157, 0.06);
+    padding: 4px 12px;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 255, 157, 0.15);
+    letter-spacing: 0.5px;
 }
 
-/* --- PWA YÜKLEME REHBERİ STİLLERİ --- */
-/* --- YENİ MİNİMALİST PWA BANNER --- */
+/* --- MİNİMALİST PWA BANNER --- */
 .pwa-install-banner {
     position: fixed;
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: rgba(31, 31, 36, 0.95);
-    backdrop-filter: blur(8px); /* Arkasını hafif buzlu cam yapar */
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: rgba(22, 22, 26, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 212, 255, 0.25);
     padding: 8px 16px;
     border-radius: 30px;
     display: flex;
     align-items: center;
     gap: 12px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
     z-index: 9999;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -175,47 +229,34 @@ summary::-webkit-details-marker {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Yazı kısmını biraz küçülttük ve sadeleştirdik */
 .pwa-install-banner span {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.5px;
 }
 
-/* Butonu çok daha kibar ve ufak yaptık */
 .pwa-btn {
     background: var(--primary);
-    color: #000;
+    color: #000000;
     border: none;
     padding: 6px 14px;
-    font-weight: 700;
+    font-weight: 800;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 11px;
     transition: background 0.2s, transform 0.2s;
 }
 
 .pwa-btn:hover {
     background: #00b8dd;
 }
-}
 
-.pwa-install-banner.show {
-    transform: translateX(-50%) translateY(0);
-}
-
-
-
-.pwa-btn:hover {
-    transform: scale(1.05);
-}
-
-/* Modal (Açılır Pencere) */
+/* Modal */
 .pwa-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
     display: flex; justify-content: center; align-items: center;
     z-index: 10000;
     opacity: 0; pointer-events: none;
@@ -227,11 +268,11 @@ summary::-webkit-details-marker {
 }
 
 .pwa-modal-content {
-    background: #141416;
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
     padding: 30px;
-    border-radius: 20px;
-    max-width: 400px;
+    border-radius: 24px;
+    max-width: 380px;
     width: 85%;
     position: relative;
     text-align: center;
@@ -246,8 +287,9 @@ summary::-webkit-details-marker {
 .pwa-instructions {
     text-align: left;
     margin-top: 20px;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
+    color: #e2e2e9;
 }
 
 .pwa-instructions li {
@@ -258,86 +300,88 @@ summary::-webkit-details-marker {
 
 <body>
 
-<header>💪 PUSH / PULL / LEG PROGRAMI</header>
+<header>
+    <h1>FITS SPOR CENTER</h1>
+</header>
 
 <div class="container">
 
-<details open>
-<summary>Push 1</summary>
-<div class="exercise-list">
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Bench_press.gif"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Incline_dumbbell_press.gif"><div class="info"><h3>Incline Press</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Dumbbell_fly.gif"><div class="info"><h3>Fly</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Shoulder_press.gif"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Lateral_raise.gif"><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Triceps_pushdown.gif"><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Overhead_triceps_extension.gif"><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
-</div>
-</details>
+    <div class="level-selector">
+        <button class="level-btn active" onclick="switchLevel('beginner')">Başlangıç</button>
+        <button class="level-btn" onclick="switchLevel('intermediate')">Orta Seviye</button>
+        <button class="level-btn" onclick="switchLevel('advanced')">İleri Düzey</button>
+    </div>
 
-<details>
-<summary>Pull 1</summary>
-<div class="exercise-list">
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Lat_pulldown.gif"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/V_bar_pulldown.gif"><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Single_arm_row.gif"><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Reverse_pec_deck.gif"><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Biceps_curl.gif"><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Machine_curl.gif"><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
-</div>
-</details>
+    <div id="beginner" class="program-content active">
+        <details open>
+            <summary>Push 1</summary>
+            <div class="exercise-list">
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Bench_press.gif"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Incline_dumbbell_press.gif"><div class="info"><h3>Incline Press</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Dumbbell_fly.gif"><div class="info"><h3>Fly</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Shoulder_press.gif"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Lateral_raise.gif"><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Triceps_pushdown.gif"><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Overhead_triceps_extension.gif"><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
+            </div>
+        </details>
 
-<details>
-<summary>Leg</summary>
-<div class="exercise-list">
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Hack_squat.gif"><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Leg_extension.gif"><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Leg_curl.gif"><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Leg_press.gif"><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Lunge.gif"><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
-</div>
-</details>
+        <details>
+            <summary>Pull 1</summary>
+            <div class="exercise-list">
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Lat_pulldown.gif"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/V_bar_pulldown.gif"><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Single_arm_row.gif"><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Reverse_pec_deck.gif"><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Biceps_curl.gif"><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Machine_curl.gif"><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
+            </div>
+        </details>
 
-<details>
-<summary>Push 2</summary>
-<div class="exercise-list">
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Smith_incline_press.gif"><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Bench_press.gif"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Shoulder_press.gif"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Lateral_raise.gif"><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Front_raise.gif"><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Overhead_triceps_extension.gif"><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Triceps_pushdown.gif"><div class="info"><h3>Single Rope Pushdown</h3><div class="sets">4x10-12</div></div></div>
-</div>
-</details>
+        <details>
+            <summary>Leg</summary>
+            <div class="exercise-list">
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Hack_squat.gif"><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Leg_extension.gif"><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Leg_curl.gif"><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Leg_press.gif"><div class="info"><h3>Leg Press</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Lunge.gif"><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+            </div>
+        </details>
+    </div>
 
-<details>
-<summary>Pull 2</summary>
-<div class="exercise-list">
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Machine_row.gif"><div class="info"><h3>Machine Row</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Seated_row.gif"><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Lat_pulldown.gif"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Reverse_pec_deck.gif"><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Preacher_curl.gif"><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Hammer_curl.gif"><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
-</div>
-</details>
+    <div id="intermediate" class="program-content">
+        <p style="text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Orta Seviye Antrenman Listesi</p>
+        <details open>
+            <summary>Push 1</summary>
+            <div class="exercise-list">
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Bench_press.gif"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Shoulder_press.gif"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+            </div>
+        </details>
+        <details>
+            <summary>Pull 1</summary>
+            <div class="exercise-list">
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Lat_pulldown.gif"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+            </div>
+        </details>
+    </div>
 
-<details>
-<summary>Leg 2 (Opsiyonel)</summary>
-<div class="exercise-list">
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Hack_squat.gif"><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Leg_extension.gif"><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Leg_curl.gif"><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Leg_press.gif"><div class="info"><h3>Leg Press</h3><div class="sets">4x10-12</div></div></div>
-    <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Lunge.gif"><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
-</div>
-</details>
+    <div id="advanced" class="program-content">
+        <p style="text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">İleri Düzey Antrenman Listesi</p>
+        <details open>
+            <summary>Push 1</summary>
+            <div class="exercise-list">
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Bench_press.gif"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+                <div class="exercise"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Shoulder_press.gif"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+            </div>
+        </details>
+    </div>
 
 </div>
 
 <div id="installBanner" class="pwa-install-banner">
-    <span>Uygulama</span>
+    <span>📱 Uygulama Olarak İndir</span>
     <button id="installBtn" class="pwa-btn">Yükle</button>
 </div>
 
@@ -345,22 +389,38 @@ summary::-webkit-details-marker {
     <div class="pwa-modal-content">
         <span id="closeModal" class="pwa-modal-close">&times;</span>
         <h3 style="color:var(--primary); margin:0 0 15px 0;">Nasıl Yüklenir?</h3>
-        <p style="font-size:14px; color:var(--text-muted);">Uygulamayı telefonuna indirmek için cihazına uygun adımları takip et:</p>
-        
+        <p style="font-size:13px; color:var(--text-muted);">Uygulamayı indirmek için cihazına uygun adımları takip et:</p>
         <ul class="pwa-instructions">
-            <li id="androidInstruction"><strong>Android:</strong> Açılan pencerede "Yükle" butonuna bas veya tarayıcı sağ üstündeki 3 noktaya tıklayıp <strong>"Uygulamayı Yükle"</strong> seçeneğini seç.</li>
-            <li><strong>iPhone (iOS):</strong> Tarayıcının altındaki <strong>"Paylaş" (Ok işareti)</strong> butonuna bas ve açılan menüden <strong>"Ana Ekrana Ekle"</strong> seçeneğini seç.</li>
+            <li id="androidInstruction"><strong>Android:</strong> Tarayıcı sağ üstündeki 3 noktaya tıklayıp <strong>"Uygulamayı Yükle"</strong> seçeneğini seçin.</li>
+            <li><strong>iPhone (iOS):</strong> Safari altındaki <strong>"Paylaş" (Ok işareti)</strong> butonuna basıp <strong>"Ana Ekrana Ekle"</strong> seçeneğini seçin.</li>
         </ul>
     </div>
 </div>
 
 <script>
-// Akordeon mantığı
+// Dinamik Seviye Değiştirme Fonksiyonu (Tabs)
+function switchLevel(levelId) {
+    // Tüm içerikleri gizle
+    document.querySelectorAll('.program-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    // Tüm butonların aktifliğini kaldır
+    document.querySelectorAll('.level-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Seçilen içeriği göster ve butonu aktif yap
+    document.getElementById(levelId).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+
+// Akordeon tekli açılma mantığı
 const detailsElements = document.querySelectorAll('details');
 detailsElements.forEach((targetDetail) => {
     targetDetail.addEventListener('click', (e) => {
         if (e.target.tagName === 'SUMMARY') {
-            detailsElements.forEach((detail) => {
+            const currentContent = targetDetail.closest('.program-content');
+            currentContent.querySelectorAll('details').forEach((detail) => {
                 if (detail !== targetDetail) {
                     detail.removeAttribute('open');
                 }
@@ -369,31 +429,26 @@ detailsElements.forEach((targetDetail) => {
     });
 });
 
-// PWA Akıllı Buton ve Pop-up Yönetimi
+// PWA Yönetimi
 let deferredPrompt;
 const banner = document.getElementById('installBanner');
 const installBtn = document.getElementById('installBtn');
 const modal = document.getElementById('installModal');
 const closeModal = document.getElementById('closeModal');
 
-// 1. ADIM: Kullanıcı zaten uygulamayı indirmişse barı tamamen gizle
 if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     banner.style.display = 'none';
 } else {
-    // 2. ADIM: Uygulama yüklü değilse, barı HER KOŞULDA ekranda göster (Garantiye alıyoruz)
     banner.classList.add('show');
 }
 
-// Android/PC otomatik indirme tetikleyicisini yakala
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
 });
 
-// 3. ADIM: Butona basıldığında ne olacak?
 installBtn.addEventListener('click', async () => {
     if (deferredPrompt) {
-        // Eğer Android Chrome ise doğrudan resmi indirme penceresini aç
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
         if (outcome === 'accepted') {
@@ -401,21 +456,16 @@ installBtn.addEventListener('click', async () => {
         }
         deferredPrompt = null;
     } else {
-        // Eğer iPhone (Safari) veya desteklemeyen başka bir tarayıcıysa KESİNLİKLE pop-up'ı aç
         modal.classList.add('open');
     }
 });
 
-// Pop-up Kapatma Mantığı
 closeModal.addEventListener('click', () => modal.classList.remove('open'));
 window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
 
-// Service Worker Kaydı
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('PWA Aktif!'))
-      .catch(err => console.log('PWA Hatası:', err));
+    navigator.serviceWorker.register('./sw.js').catch(err => console.log(err));
   });
 }
 </script>
