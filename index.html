@@ -347,38 +347,31 @@ detailsElements.forEach((targetDetail) => {
     });
 });
 
-// PWA Servis Kaydı ve Akıllı Buton Mantığı
+// PWA Akıllı Buton ve Pop-up Yönetimi
 let deferredPrompt;
 const banner = document.getElementById('installBanner');
 const installBtn = document.getElementById('installBtn');
 const modal = document.getElementById('installModal');
 const closeModal = document.getElementById('closeModal');
 
-// Uygulama zaten yüklüyse veya standalone moddaysa butonu hiç gösterme
+// 1. ADIM: Kullanıcı zaten uygulamayı indirmişse barı tamamen gizle
 if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     banner.style.display = 'none';
 } else {
-    // Tarayıcı PWA indirmeye hazır olduğunda tetiklenir (Özellikle Android/PC)
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        banner.classList.add('show'); // Alttaki yükleme barını göster
-    });
-
-    // Sayfa yüklendiğinde iOS kullanıcıları için de barı gösterelim (Çünkü iOS beforeinstallprompt desteklemez)
-    window.addEventListener('load', () => {
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {
-            banner.classList.add('show');
-            document.getElementById('androidInstruction').style.opacity = '0.4'; // Android talimatını silikleştir
-        }
-    });
+    // 2. ADIM: Uygulama yüklü değilse, barı HER KOŞULDA ekranda göster (Garantiye alıyoruz)
+    banner.classList.add('show');
 }
 
-// Yükle butonuna basılınca ne olacak?
+// Android/PC otomatik indirme tetikleyicisini yakala
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+});
+
+// 3. ADIM: Butona basıldığında ne olacak?
 installBtn.addEventListener('click', async () => {
     if (deferredPrompt) {
-        // Android/PC için otomatik tarayıcı yükleme penceresini açar
+        // Eğer Android Chrome ise doğrudan resmi indirme penceresini aç
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
         if (outcome === 'accepted') {
@@ -386,12 +379,12 @@ installBtn.addEventListener('click', async () => {
         }
         deferredPrompt = null;
     } else {
-        // Tarayıcı otomatik pencereyi açamıyorsa (Örn: iOS Safari), rehber pop-up penceresini aç
+        // Eğer iPhone (Safari) veya desteklemeyen başka bir tarayıcıysa KESİNLİKLE pop-up'ı aç
         modal.classList.add('open');
     }
 });
 
-// Pop-up Kapatma
+// Pop-up Kapatma Mantığı
 closeModal.addEventListener('click', () => modal.classList.remove('open'));
 window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
 
