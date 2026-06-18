@@ -1,11 +1,11 @@
-const CACHE_NAME = 'fitsspor-v1';
+const CACHE_NAME = 'fitsspor-v2';
 const ASSETS = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './logo.jpg'
 ];
 
-// Sitenin dosyalarını telefonun hafızasına kaydetme (Kütüphaneye ekleme)
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -14,7 +14,6 @@ self.addEventListener('install', (e) => {
   );
 });
 
-// İnternet yoksa hafızadaki dosyaları ekrana getirme
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((response) => {

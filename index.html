@@ -48,6 +48,7 @@ header {
     max-width: 800px;
     margin: 30px auto;
     padding: 0 20px;
+    padding-bottom: 80px; /* Buton için alt boşluk */
 }
 
 details {
@@ -149,6 +150,87 @@ summary::-webkit-details-marker {
     border-radius: 20px;
     border: 1px solid rgba(0, 255, 157, 0.2);
 }
+
+/* --- PWA YÜKLEME REHBERİ STİLLERİ --- */
+.pwa-install-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #1f1f24;
+    border: 2px solid var(--primary);
+    padding: 15px 25px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 9999;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pwa-install-banner.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.pwa-btn {
+    background: var(--primary);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 700;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s ease;
+}
+
+.pwa-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Modal (Açılır Pencere) */
+.pwa-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.pwa-modal.open {
+    opacity: 1; pointer-events: auto;
+}
+
+.pwa-modal-content {
+    background: #141416;
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 85%;
+    position: relative;
+    text-align: center;
+}
+
+.pwa-modal-close {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 24px; cursor: pointer; color: var(--text-muted);
+}
+
+.pwa-instructions {
+    text-align: left;
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.pwa-instructions li {
+    margin-bottom: 12px;
+}
 </style>
 </head>
 
@@ -232,10 +314,27 @@ summary::-webkit-details-marker {
 
 </div>
 
-<script>
-// Akordeon mantığı: Bir menü açıldığında diğerlerini otomatik kapatır
-const detailsElements = document.querySelectorAll('details');
+<div id="installBanner" class="pwa-install-banner">
+    <span>📱 Uygulama Olarak İndir</span>
+    <button id="installBtn" class="pwa-btn">Yükle</button>
+</div>
 
+<div id="installModal" class="pwa-modal">
+    <div class="pwa-modal-content">
+        <span id="closeModal" class="pwa-modal-close">&times;</span>
+        <h3 style="color:var(--primary); margin:0 0 15px 0;">Nasıl Yüklenir?</h3>
+        <p style="font-size:14px; color:var(--text-muted);">Uygulamayı telefonuna indirmek için cihazına uygun adımları takip et:</p>
+        
+        <ul class="pwa-instructions">
+            <li id="androidInstruction"><strong>Android:</strong> Açılan pencerede "Yükle" butonuna bas veya tarayıcı sağ üstündeki 3 noktaya tıklayıp <strong>"Uygulamayı Yükle"</strong> seçeneğini seç.</li>
+            <li><strong>iPhone (iOS):</strong> Tarayıcının altındaki <strong>"Paylaş" (Ok işareti)</strong> butonuna bas ve açılan menüden <strong>"Ana Ekrana Ekle"</strong> seçeneğini seç.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+// Akordeon mantığı
+const detailsElements = document.querySelectorAll('details');
 detailsElements.forEach((targetDetail) => {
     targetDetail.addEventListener('click', (e) => {
         if (e.target.tagName === 'SUMMARY') {
@@ -248,12 +347,60 @@ detailsElements.forEach((targetDetail) => {
     });
 });
 
-// PWA Arka Plan İşçisi (Service Worker) Kayıt Kodu
+// PWA Servis Kaydı ve Akıllı Buton Mantığı
+let deferredPrompt;
+const banner = document.getElementById('installBanner');
+const installBtn = document.getElementById('installBtn');
+const modal = document.getElementById('installModal');
+const closeModal = document.getElementById('closeModal');
+
+// Uygulama zaten yüklüyse veya standalone moddaysa butonu hiç gösterme
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    banner.style.display = 'none';
+} else {
+    // Tarayıcı PWA indirmeye hazır olduğunda tetiklenir (Özellikle Android/PC)
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        banner.classList.add('show'); // Alttaki yükleme barını göster
+    });
+
+    // Sayfa yüklendiğinde iOS kullanıcıları için de barı gösterelim (Çünkü iOS beforeinstallprompt desteklemez)
+    window.addEventListener('load', () => {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+            banner.classList.add('show');
+            document.getElementById('androidInstruction').style.opacity = '0.4'; // Android talimatını silikleştir
+        }
+    });
+}
+
+// Yükle butonuna basılınca ne olacak?
+installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+        // Android/PC için otomatik tarayıcı yükleme penceresini açar
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            banner.classList.remove('show');
+        }
+        deferredPrompt = null;
+    } else {
+        // Tarayıcı otomatik pencereyi açamıyorsa (Örn: iOS Safari), rehber pop-up penceresini aç
+        modal.classList.add('open');
+    }
+});
+
+// Pop-up Kapatma
+closeModal.addEventListener('click', () => modal.classList.remove('open'));
+window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+
+// Service Worker Kaydı
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('PWA Başarıyla Aktif Edildi!', reg))
-      .catch(err => console.log('PWA Yükleme Hatası:', err));
+      .then(reg => console.log('PWA Aktif!'))
+      .catch(err => console.log('PWA Hatası:', err));
   });
 }
 </script>
