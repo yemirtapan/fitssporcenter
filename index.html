@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Push Pull Leg Program</title>
 
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00d4ff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="logo.jpg">
+
 <style>
 :root {
     --bg-main: #0a0a0c;
@@ -77,7 +83,6 @@ summary:hover {
     background: var(--bg-summary-hover);
 }
 
-/* Özel ok ikonu (Custom Arrow) */
 summary::after {
     content: '➔';
     font-size: 14px;
@@ -89,7 +94,6 @@ details[open] summary::after {
     transform: rotate(-90deg);
 }
 
-/* Webkit tarayıcıları için varsayılan oku gizleme */
 summary::-webkit-details-marker {
     display: none;
 }
@@ -234,7 +238,6 @@ const detailsElements = document.querySelectorAll('details');
 
 detailsElements.forEach((targetDetail) => {
     targetDetail.addEventListener('click', (e) => {
-        // Sadece summary tıklandığında tetiklenmesi için (içerik tıklamalarını muaf tutar)
         if (e.target.tagName === 'SUMMARY') {
             detailsElements.forEach((detail) => {
                 if (detail !== targetDetail) {
@@ -244,6 +247,15 @@ detailsElements.forEach((targetDetail) => {
         }
     });
 });
+
+// PWA Arka Plan İşçisi (Service Worker) Kayıt Kodu
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('PWA Başarıyla Aktif Edildi!', reg))
+      .catch(err => console.log('PWA Yükleme Hatası:', err));
+  });
+}
 </script>
 
 </body>
