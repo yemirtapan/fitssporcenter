@@ -1,24 +1,16 @@
 {
   "name": "Fits Spor Center",
   "short_name": "FitsSpor",
-  "description": "Push Pull Leg Antrenman Programı",
-  "start_url": "fitssporcenter",
+  "start_url": "/fitssporcenter/",
+  "scope": "/fitssporcenter/",
   "display": "standalone",
-  "background_color": "#0a0a0c",
+  "background_color": "#030712",
   "theme_color": "#0d1b2a",
-  "orientation": "portrait",
   "icons": [
     {
       "src": "logo.jpg",
       "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any"
-    },
-    {
-      "src": "logo.jpg",
-      "sizes": "192x192",
-      "type": "image/jpeg",
-      "purpose": "any"
+      "type": "image/jpeg"
     }
   ]
 }
