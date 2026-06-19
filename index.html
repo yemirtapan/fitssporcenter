@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fits Spor Center</title>
 
+<link class="apple-touch-icon" href="logo.jpg">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0d1b2a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link class="apple-touch-icon" href="logo.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -267,6 +267,7 @@ details[open] .exercise-wrapper {
     transform: scale(1.01);
 }
 
+/* Küçük resimler (liste videoları) alanı kaplar ve siyahlık bırakmaz */
 .exercise video {
     width: 110px;
     height: 85px;
@@ -275,6 +276,7 @@ details[open] .exercise-wrapper {
     background: #000;
     border: 1px solid rgba(255,255,255,0.05);
     transition: transform 0.3s ease;
+    pointer-events: none;
 }
 
 .exercise:hover video {
@@ -356,14 +358,24 @@ details[open] .exercise-wrapper {
     letter-spacing: 0.5px;
 }
 
+/* Videonun etrafındaki kutunun kenarlarını yuvarladık ve taşan kısımları gizledik */
+.modal-video-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 20px; /* Kenar yumuşatma buraya sabitlendi */
+    overflow: hidden;    /* Video taşmalarını ve keskin köşelerini tamamen gizler */
+    background: transparent;
+}
+
+/* Büyük video ayarları */
 .gif-preview-content video {
     width: 100%;
     height: auto;
-    max-height: 320px;
-    object-fit: contain;
+    max-height: 70vh;
+    object-fit: cover; /* Videoyu tam sığdırarak boşluk kalmasını engeller */
+    display: block;
+    pointer-events: none;
     border-radius: 20px;
-    background: #000;
-    border: 1px solid var(--glass-border);
 }
 
 /* --- PWA BANNER VE MODAL --- */
@@ -570,7 +582,7 @@ details[open] .exercise-wrapper {
 <div id="gifPreviewModal" class="gif-preview-modal">
     <div class="gif-preview-content">
         <span id="closeGifModal" class="gif-preview-close">&times;</span>
-        <div id="modalMediaContainer"></div>
+        <div id="modalMediaContainer" class="modal-video-wrapper"></div>
         <h3 id="modalExerciseName">Hareket Adı</h3>
     </div>
 </div>
@@ -667,8 +679,7 @@ document.querySelectorAll('.exercise').forEach(item => {
         modalExerciseName.innerText = exerciseName;
         
         if (mediaUrl) {
-            // Video sadece bu modal açıldığında "autoplay" ve "controls" ile başlar
-            mediaContainer.innerHTML = `<video src="${mediaUrl}" autoplay loop muted playsinline controls style="width:100%; height:auto; max-height:320px; object-fit:contain; border-radius:20px; background:#000; border:1px solid var(--glass-border);"></video>`;
+            mediaContainer.innerHTML = `<video src="${mediaUrl}" autoplay loop muted playsinline></video>`;
         }
         
         gifModal.classList.add('open');
