@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fits Spor Center</title>
 
-<link rel="apple-touch-icon" href="logo.jpg">
+<link class="apple-touch-icon" href="logo.jpg">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0d1b2a">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -175,14 +175,13 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
     cursor: pointer;
 }
 
-.exercise video {
+/* Küçük Liste Resimleri için Sünme Engelleme */
+.exercise img {
     width: 110px;
     height: 85px;
-    object-fit: cover;
+    object-fit: cover; /* Resmi sündürmeden kutuya sığdırır */
     border-radius: 14px;
     background: #000;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
 }
 
 .info h3 { margin: 0 0 10px 0; font-size: 16px; color: #ffffff; }
@@ -192,18 +191,17 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
 .gif-preview-modal, .pwa-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(2, 4, 8, 0.9);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: rgba(2, 4, 8, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     display: flex; justify-content: center; align-items: center;
     z-index: 11000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
 .gif-preview-modal.open, .pwa-modal.open { opacity: 1; pointer-events: auto; }
 
-/* Video Önizleme Kapsayıcısı */
 .gif-preview-content {
     background: transparent;
-    padding: 15px; border-radius: 28px; max-width: 450px; width: 90%; position: relative; text-align: center;
+    padding: 15px; max-width: 420px; width: 90%; position: relative; text-align: center;
 }
 
 .pwa-modal-content {
@@ -212,36 +210,71 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
     padding: 25px 20px; border-radius: 28px; max-width: 380px; width: 90%; position: relative; text-align: center;
 }
 
-/* Yenilenen Kapatma Çarpısı - Video Üzerinde Sabit */
 .gif-preview-close {
     position: absolute; 
-    top: -20px; 
-    right: 15px; 
-    font-size: 36px; 
+    top: -15px; 
+    right: 25px; 
+    font-size: 32px; 
     cursor: pointer; 
     color: #ffffff;
     z-index: 12000;
-    background: rgba(0, 0, 0, 0.5);
-    width: 45px;
-    height: 45px;
-    line-height: 40px;
+    background: rgba(251, 133, 0, 0.85);
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
     border-radius: 50px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px var(--primary-glow);
 }
 .pwa-modal-close { position: absolute; top: 15px; right: 20px; color: var(--text-muted); font-size: 28px; cursor: pointer; }
 
-.modal-video-wrapper { position: relative; width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
-.gif-preview-content video { width: 100%; height: auto; border-radius: 20px; transform: translateZ(0); -webkit-transform: translateZ(0); }
-#modalExerciseName { margin: 20px 0 0 0; font-family: 'Oswald', sans-serif; color: #ffffff; font-size: 22px; letter-spacing: 1px; }
+/* MP4 Video Kapsayıcı Ayarları */
+.modal-image-wrapper { 
+    position: relative; 
+    width: 100%; 
+    aspect-ratio: 4 / 3; /* Videoların genel en-boy standardını sabitler */
+    border-radius: 24px; 
+    overflow: hidden; 
+    box-shadow: 0 15px 50px rgba(0,0,0,0.7); 
+    background: #000; 
+    margin-bottom: 15px; 
+}
 
-/* Mobil Bilgilendirme Yazısı */
+/* Büyütülen Videoların Sünmesini (Stretched) Önleyen Ayar */
+.gif-preview-content video { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 24px; 
+    display: block; 
+    object-fit: cover; /* Videoyu bozmadan, sündürmeden alanı tam doldurur */
+}
+
+/* Menü Kartı Alanı */
+.modal-info-card {
+    background: rgba(13, 27, 42, 0.75);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+    border-radius: 22px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-info-left { display: flex; flex-direction: column; gap: 6px; }
+#modalExerciseName { margin: 0; font-family: 'Oswald', sans-serif; color: #ffffff; font-size: 22px; letter-spacing: 0.5px; }
+#modalExerciseSets { align-self: flex-start; }
+.modal-logo { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--primary-orange); object-fit: cover; }
+
 .modal-hint-text {
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted);
-    margin-top: 8px;
+    margin-top: 12px;
     font-weight: 500;
+    text-align: center;
 }
 
 /* --- OS VE REHBER SEKMELERI --- */
@@ -320,13 +353,13 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
             <summary>Pazartesi</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8633_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8634_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Incline Chest Fly Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8635_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Pec Deck Fly</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8636_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Dumbell Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8637_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8638_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8639_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Overhead Triceps Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8633.gif" loading="lazy" alt=""><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8634.gif" loading="lazy" alt=""><div class="info"><h3>Incline Chest Fly Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8635.gif" loading="lazy" alt=""><div class="info"><h3>Pec Deck Fly</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8636.gif" loading="lazy" alt=""><div class="info"><h3>Dumbell Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8637.gif" loading="lazy" alt=""><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8638.gif" loading="lazy" alt=""><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8639.gif" loading="lazy" alt=""><div class="info"><h3>Overhead Triceps Extension</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -334,12 +367,12 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
             <summary>Salı</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8640_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8641_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8642_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8645_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8647_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8646_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8640.gif" loading="lazy" alt=""><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8641.gif" loading="lazy" alt=""><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8642.gif" loading="lazy" alt=""><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8645.gif" loading="lazy" alt=""><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8647.gif" loading="lazy" alt=""><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8646.gif" loading="lazy" alt=""><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -347,11 +380,11 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
             <summary>Çarşamba</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8649_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8651_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8652_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8653_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8654_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Lunge</h3><div class="sets">4 x Tükeniş</div></div></div>
+                    <div class="exercise"><img src="Img 8649.gif" loading="lazy" alt=""><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8651.gif" loading="lazy" alt=""><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8652.gif" loading="lazy" alt=""><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8653.gif" loading="lazy" alt=""><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8654.gif" loading="lazy" alt=""><div class="info"><h3>Lunge</h3><div class="sets">4 x Tükeniş</div></div></div>
                 </div>
             </div>
         </details>
@@ -359,13 +392,13 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
             <summary>Perşembe</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8655_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8633_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8636_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8637_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8657_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8639_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8638_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Triceps Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8655.gif" loading="lazy" alt=""><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8633.gif" loading="lazy" alt=""><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8636.gif" loading="lazy" alt=""><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8637.gif" loading="lazy" alt=""><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8657.gif" loading="lazy" alt=""><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8639.gif" loading="lazy" alt=""><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8638.gif" loading="lazy" alt=""><div class="info"><h3>Triceps Pushdown</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -373,12 +406,12 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
             <summary>Cuma</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8661_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Dumble Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8658_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8640_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8645_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8660_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8659_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8661.gif" loading="lazy" alt=""><div class="info"><h3>Dumble Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8658.gif" loading="lazy" alt=""><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8640.gif" loading="lazy" alt=""><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8645.gif" loading="lazy" alt=""><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8660.gif" loading="lazy" alt=""><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8659.gif" loading="lazy" alt=""><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -386,11 +419,11 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
             <summary>Cumartesi (Opsiyonel)</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8649_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8651_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8652_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8653_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8654_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Lunge</h3><div class="sets">4 x Tükeniş</div></div></div>
+                    <div class="exercise"><img src="Img 8649.gif" loading="lazy" alt=""><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8651.gif" loading="lazy" alt=""><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8652.gif" loading="lazy" alt=""><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8653.gif" loading="lazy" alt=""><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8654.gif" loading="lazy" alt=""><div class="info"><h3>Lunge</h3><div class="sets">4 x Tükeniş</div></div></div>
                 </div>
             </div>
         </details>
@@ -403,8 +436,8 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
             <summary>Daha</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8671_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8672_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8671.gif" loading="lazy" alt=""><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8672.gif" loading="lazy" alt=""><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -412,20 +445,29 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
             <summary>Eklenmedi</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8673_optimized.mp4" preload="none" autoplay loop muted playsinline aria-hidden="true"></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><img src="Img 8673.gif" loading="lazy" alt=""><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
     </div>
 </div>
 
-<!-- Video Detay Modalı (PRATİK KAPATMA DESTEKLİ) -->
+<!-- Gelişmiş Video Önizleme Modalı -->
 <div id="gifPreviewModal" class="gif-preview-modal">
     <div class="gif-preview-content">
         <span id="closeGifModal" class="gif-preview-close">&times;</span>
-        <div id="modalMediaContainer" class="modal-video-wrapper"></div>
-        <h3 id="modalExerciseName">Hareket Adı</h3>
-        <span class="modal-hint-text">Kapatmak için ekranda herhangi bir yere dokunun veya aşağı kaydırın</span>
+        <div id="modalMediaContainer" class="modal-image-wrapper"></div>
+        
+        <!-- Hoş Menü Kartı -->
+        <div class="modal-info-card">
+            <div class="modal-info-left">
+                <h3 id="modalExerciseName">Hareket Adı</h3>
+                <div id="modalExerciseSets" class="sets">4x10-12</div>
+            </div>
+            <img class="modal-logo" src="logo.jpg" alt="Logo">
+        </div>
+        
+        <span class="modal-hint-text">Kapatmak için boşluğa dokunabilir veya aşağı kaydırabilirsin</span>
     </div>
 </div>
 
@@ -508,7 +550,7 @@ function switchOS(osType) {
     }
 }
 
-// Akordeon Detay Geçişi Kontrolü
+// Akordeon Detay Geçişi
 document.querySelectorAll('details').forEach((el) => {
     const summary = el.querySelector('summary');
     const wrapper = el.querySelector('.exercise-wrapper');
@@ -527,7 +569,6 @@ document.querySelectorAll('details').forEach((el) => {
 
         if (!el.hasAttribute('open')) {
             el.setAttribute('open', 'true');
-            el.querySelectorAll('video').forEach(v => { if(v.preload === 'none') v.preload = 'metadata'; });
             setTimeout(() => { wrapper.style.gridTemplateRows = '1fr'; }, 10);
         } else {
             wrapper.style.gridTemplateRows = '0fr';
@@ -536,50 +577,54 @@ document.querySelectorAll('details').forEach((el) => {
     });
 });
 
-// Büyük Video Önizleme Modalı Kontrolleri
+// Menülü Akıllı Video Önizleme Mekanizması
 const gifModal = document.getElementById('gifPreviewModal');
 const mediaContainer = document.getElementById('modalMediaContainer');
 const modalExerciseName = document.getElementById('modalExerciseName');
+const modalExerciseSets = document.getElementById('modalExerciseSets');
 const closeGifModal = document.getElementById('closeGifModal');
 
 document.querySelectorAll('.exercise').forEach(item => {
     item.addEventListener('click', () => {
-        const videoEl = item.querySelector('video');
-        let mediaUrl = videoEl ? videoEl.getAttribute('src') : "";
+        const imgEl = item.querySelector('img');
+        let gifUrl = imgEl ? imgEl.getAttribute('src') : "";
+        let videoUrl = gifUrl.replace('.gif', '.mp4');
         
-        if (mediaUrl) {
-            mediaUrl = mediaUrl.replace('_optimized.mp4', '.mp4');
-            mediaUrl = mediaUrl + '?t=' + new Date().getTime();
+        if (videoUrl) {
+            videoUrl = videoUrl + '?t=' + new Date().getTime();
         }
         
         const exerciseName = item.querySelector('.info h3').innerText;
-        modalExerciseName.innerText = exerciseName;
+        const exerciseSets = item.querySelector('.sets').innerText;
         
-        if (mediaUrl) {
-            mediaContainer.innerHTML = `<video src="${mediaUrl}" autoplay loop muted playsinline style="width:100%; border-radius:20px; display:block;"></video>`;
+        modalExerciseName.innerText = exerciseName;
+        modalExerciseSets.innerText = exerciseSets;
+        
+        if (videoUrl) {
+            mediaContainer.innerHTML = `
+                <video src="${videoUrl}" autoplay loop muted playsinline webkit-playsinline></video>
+            `;
         }
         gifModal.classList.add('open');
     });
 });
 
-// MODALI KAPATMA FONKSİYONU
 function closeModalFunction() {
     gifModal.classList.remove('open');
     setTimeout(() => { mediaContainer.innerHTML = ""; }, 300); 
 }
 
-// 1. Çarpı İşaretine Tıklayınca Kapanma
 closeGifModal.addEventListener('click', (e) => {
-    e.stopPropagation(); // Diğer tıklama eventlerini tetiklemesin
+    e.stopPropagation(); 
     closeModalFunction();
 });
 
-// 2. Ekranın Herhangi Bir Yerine (Video Dahil) Tıklayınca Pratik Kapanma
-gifModal.addEventListener('click', () => {
-    closeModalFunction();
+gifModal.addEventListener('click', (e) => {
+    if(!e.target.closest('.modal-info-card')) {
+        closeModalFunction();
+    }
 });
 
-// 3. Mobil Cihazlar İçin Aşağı Kaydırınca (Swipe Down) Kapanma Desteği
 let touchstartY = 0;
 let touchendY = 0;
 
@@ -589,14 +634,13 @@ gifModal.addEventListener('touchstart', e => {
 
 gifModal.addEventListener('touchend', e => {
     touchendY = e.changedTouches[0].screenY;
-    // Eğer kullanıcı parmağını yukarıdan aşağıya en az 50 piksel kaydırdıysa kapat
     if (touchendY - touchstartY > 50) {
         closeModalFunction();
     }
 }, { passive: true });
 
 
-// PWA Kurulum Adımları (iOS)
+// PWA Kurulum Adımları
 let currentStep = 1;
 const totalSteps = 4;
 const prevBtn = document.getElementById('prevStepBtn');
