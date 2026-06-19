@@ -179,7 +179,7 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
 .exercise video {
     width: 80px;
     height: 110px;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 12px;
     background: rgba(0, 0, 0, 0.3);
 }
@@ -226,13 +226,23 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
 
 .modal-image-wrapper { 
     position: relative; 
-    width: 100%; 
+    width: auto; 
     height: auto;
-    max-height: 55vh;
     box-shadow: 0 15px 50px rgba(0,0,0,0.7); 
     background: #000000;
-    border-radius: 20px;
+    
+    /* Köşeleri yuvarlatma ayarları */
+    border-radius: 20px; 
     overflow: hidden;
+    
+    /* İŞTE SİHİRLİ DOKUNUŞ: iOS için video köşelerini maskelemek */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    
+    /* Hardware acceleration (Donanım hızlandırma) */
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -240,13 +250,15 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
 
 .gif-preview-content video { 
     width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    max-height: 55vh !important;
+    height: 100% !important;
     display: block; 
-    object-fit: contain !important;
-    aspect-ratio: auto !important;  
-    border-radius: 20px;
+    
+    /* 'cover' kullanmak köşeleri doldurur, 'contain' kullanırsan kenarlar boş kalır */
+    object-fit: cover !important; 
+    
+    /* Videonun kendisine radius verme, sadece wrapper'a (yukarıdaki) ver */
+    border-radius: 0 !important; 
+    background: #000;
 }
 
 .modal-info-card {
