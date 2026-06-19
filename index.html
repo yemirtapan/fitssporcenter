@@ -176,9 +176,9 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
 }
 
 .exercise img {
-    width: 110px;
-    height: 80px;
-    object-fit: cover;
+    width: 80px;
+    height: 110px;
+    object-fit: obtain;
     border-radius: 12px;
     background: rgba(0, 0, 0, 0.3);
 }
@@ -223,34 +223,31 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
 .gif-preview-close:hover { color: #ffffff; }
 .pwa-modal-close { position: absolute; top: 15px; right: 20px; color: var(--text-muted); font-size: 28px; cursor: pointer; }
 
-/* Kapsayıcı Kutunun Köşeleri (20px) */
+/* STRETCH ENGELLEME: Videoyu Saran Kutu Ayarları */
 .modal-image-wrapper { 
     position: relative; 
     width: 100%; 
     height: auto;
-    max-height: 60vh;
-    border-radius: 20px; 
-    overflow: hidden; 
+    max-height: 55vh;
     box-shadow: 0 15px 50px rgba(0,0,0,0.7); 
-    background: #000;
-    /* Mobil Safari Kırpma Hilesi */
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    background: #000000;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Videonun Kendisine Zorunlu 20px Yumuşatma ve Taşma Engeli */
+/* KESİN FİT AYARI: Video asla sünmez, ezilmez, orijinal oranını korur */
 .gif-preview-content video { 
-    width: 100%; 
-    height: auto; 
-    max-height: 60vh;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 55vh !important;
     display: block; 
-    object-fit: contain;
-    border-radius: 20px !important; 
-    overflow: hidden !important;
-    /* Video Elementi için Safari İvmesi */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    object-fit: contain !important; /* Stretch olmasını önleyen asıl kural */
+    aspect-ratio: auto !important;  /* Oranının tarayıcı tarafından ezilmesini engeller */
+    border-radius: 20px;
 }
 
 /* Menü Kartı Alanı */
