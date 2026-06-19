@@ -2,7 +2,7 @@
   "name": "Fits Spor Center",
   "short_name": "FitsSpor",
   "description": "Push Pull Leg Antrenman Programı",
-  "start_url": "fitssporcenter/index.html",
+  "start_url": "fitssporcenter",
   "display": "standalone",
   "background_color": "#0a0a0c",
   "theme_color": "#0d1b2a",
