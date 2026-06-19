@@ -53,7 +53,36 @@ header h1 {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 25px 20px 100px 20px;
+    padding: 20px 20px 100px 20px;
+}
+
+/* --- YENİ ZARİF İLETİŞİM LİNKLERİ --- */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.contact-text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.contact-text-link:hover {
+    color: var(--primary);
+}
+
+.contact-text-link svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
 }
 
 /* --- SEVİYE SEÇİM ALANI (TABS) --- */
@@ -372,12 +401,12 @@ summary::-webkit-details-marker {
 }
 
 .screenshot-step {
-    display: none; /* Varsayılan olarak tüm adımlar gizli */
+    display: none; 
     animation: fadeIn 0.3s ease;
 }
 
 .screenshot-step.active {
-    display: block; /* Sadece aktif adım görünür */
+    display: block; 
 }
 
 .screenshot-step img {
@@ -395,7 +424,7 @@ summary::-webkit-details-marker {
     color: var(--primary);
     margin-top: 10px;
     display: block;
-    min-height: 36px; /* Yazı uzunluğuna göre butonların kaymasını engeller */
+    min-height: 36px; 
 }
 
 /* Modal Navigasyon Butonları */
@@ -438,6 +467,20 @@ summary::-webkit-details-marker {
 </header>
 
 <div class="container">
+
+    <!-- SADE VE ZARİF TIKLANABİLİR LİNKLER -->
+    <div class="contact-links">
+        <a href="https://www.instagram.com/fit_sporcentermalkara/" target="_blank" class="contact-text-link">
+            <!-- Instagram SVG Logo -->
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+            Instagram
+        </a>
+        <a href="tel:05302821759" class="contact-text-link">
+            <span>📞</span> 0530 282 17 59
+        </a>
+    </div>
 
     <div class="level-selector">
         <button class="level-btn active" onclick="switchLevel('beginner')">Başlangıç</button>
@@ -562,27 +605,25 @@ summary::-webkit-details-marker {
         <span id="closeModal" class="pwa-modal-close">&times;</span>
         <h3 style="color:var(--primary); margin:0 0 5px 0;">Nasıl Yüklenir?</h3>
         
-        <!-- Tekli Fotoğraf Alanı -->
         <div class="screenshot-container">
             <div class="screenshot-step active" data-step="1">
                 <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios1.jpeg" alt="Adım 1">
-                <span class="step-text">Adım 1: Safari tarayıcısının altındaki üç nokta işaretine dokunun.</span>
+                <span class="step-text">Adım 1: Safari tarayıcısının altındaki "Paylaş" (Ok işareti) butonuna dokunun.</span>
             </div>
             <div class="screenshot-step" data-step="2">
                 <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios2.jpeg" alt="Adım 2">
-                <span class="step-text">Adım 2: Paylaş simgesine dokunun.</span>
+                <span class="step-text">Adım 2: Açılan menüyü yukarıya doğru kaydırın.</span>
             </div>
             <div class="screenshot-step" data-step="3">
                 <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios3.jpeg" alt="Adım 3">
-                <span class="step-text">Adım 3: Daha fazla seçeneğine basın.</span>
+                <span class="step-text">Adım 3: Listeden "Ana Ekrana Ekle" seçeneğini bulun ve seçin.</span>
             </div>
             <div class="screenshot-step" data-step="4">
                 <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios4.jpeg" alt="Adım 4">
-                <span class="step-text">Adım 4: Ana ekrana ekle tuşuyla uygulamayı indirin.</span>
+                <span class="step-text">Adım 4: Sağ üst köşedeki "Ekle" butonuna basarak kurulumu tamamlayın.</span>
             </div>
         </div>
 
-        <!-- Navigasyon Butonları -->
         <div class="modal-nav-buttons">
             <button id="prevStepBtn" class="nav-btn" disabled>Geri</button>
             <button id="nextStepBtn" class="nav-btn next-btn">İleri</button>
@@ -600,7 +641,7 @@ function switchLevel(levelId) {
     });
     
     document.getElementById(levelId).classList.add('active');
-    event.currentTarget.classList.add('active');
+    if(window.event) window.event.currentTarget.classList.add('active');
 }
 
 const detailsElements = document.querySelectorAll('details');
@@ -659,10 +700,8 @@ function updateSteps() {
         }
     });
 
-    // Geri butonu kontrolü
     prevBtn.disabled = currentStep === 1;
 
-    // İleri / Kapat butonu metin kontrolü
     if (currentStep === totalSteps) {
         nextBtn.innerText = "Kapat";
     } else {
@@ -675,7 +714,6 @@ nextBtn.addEventListener('click', () => {
         currentStep++;
         updateSteps();
     } else {
-        // Son adımdaysa ve "Kapat" dediyse modalı kapat ve adımı sıfırla
         modal.classList.remove('open');
         setTimeout(() => { currentStep = 1; updateSteps(); }, 300);
     }
@@ -692,7 +730,7 @@ prevBtn.addEventListener('click', () => {
 let deferredPrompt;
 const banner = document.getElementById('installBanner');
 const installBtn = document.getElementById('installBtn');
-const closeModal = document.getElementById('closeModal');
+const closeModalElement = document.getElementById('closeModal');
 
 if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     banner.style.display = 'none';
@@ -714,13 +752,13 @@ installBtn.addEventListener('click', async () => {
         }
         deferredPrompt = null;
     } else {
-        currentStep = 1; // Her açılışta ilk adımdan başlasın
+        currentStep = 1; 
         updateSteps();
         modal.classList.add('open');
     }
 });
 
-closeModal.addEventListener('click', () => modal.classList.remove('open'));
+closeModalElement.addEventListener('click', () => modal.classList.remove('open'));
 window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
 
 if ('serviceWorker' in navigator) {
