@@ -11,7 +11,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link class="apple-touch-icon" href="logo.jpg">
 
-<!-- Google Fonts: Oswald (Başlıklar için Güçlü), Inter (Yazılar için Modern) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
@@ -105,7 +104,7 @@ header h1 {
     fill: currentColor;
 }
 
-/* --- SEVİYE SEÇİM BUTONLARI (TURUNCU YAPILDI) --- */
+/* --- SEVİYE SEÇİM BUTONLARI --- */
 .level-selector {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -268,7 +267,7 @@ details[open] .exercise-wrapper {
     transform: scale(1.01);
 }
 
-.exercise img {
+.exercise video {
     width: 110px;
     height: 85px;
     object-fit: cover;
@@ -278,7 +277,7 @@ details[open] .exercise-wrapper {
     transition: transform 0.3s ease;
 }
 
-.exercise:hover img {
+.exercise:hover video {
     transform: scale(1.04);
 }
 
@@ -290,7 +289,6 @@ details[open] .exercise-wrapper {
     letter-spacing: 0.3px;
 }
 
-/* SET ETİKETLERİ (TURUNCU YAPILDI) */
 .sets {
     display: inline-block;
     color: var(--primary-orange);
@@ -308,7 +306,7 @@ details[open] .exercise-wrapper {
 @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* --- BÜYÜK GIF ÖNİZLEME MODAL --- */
+/* --- BÜYÜK VİDEO ÖNİZLEME MODAL --- */
 .gif-preview-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -360,7 +358,7 @@ details[open] .exercise-wrapper {
     letter-spacing: 0.5px;
 }
 
-.gif-preview-content img {
+.gif-preview-content video {
     width: 100%;
     height: auto;
     max-height: 320px;
@@ -370,7 +368,7 @@ details[open] .exercise-wrapper {
     border: 1px solid var(--glass-border);
 }
 
-/* --- PWA BANNER VE MODAL (BUTONLAR TURUNCU YAPILDI) --- */
+/* --- PWA BANNER VE MODAL --- */
 .pwa-install-banner {
     position: fixed;
     bottom: 25px; left: 50%;
@@ -460,7 +458,6 @@ details[open] .exercise-wrapper {
         <button class="level-btn" onclick="switchLevel('intermediate')">ORTA SEVİYE</button>
     </div>
 
-    <!-- BAŞLANGIÇ SEVİYESİ -->
     <div id="beginner" class="program-content active">
         <p class="section-title">Başlangıç Seviyesi Antrenman Listesi</p>
         
@@ -468,13 +465,13 @@ details[open] .exercise-wrapper {
             <summary>Pazartesi</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Chest-Press-Machine.gif" alt="Chest Press Machine"><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2023/06/Incline-Chest-Fly-Machine.gif" alt="Incline Chest Fly Machine"><div class="info"><h3>Incline Chest Fly Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Pec-Deck-Fly.gif" alt="Pec Deck Fly"><div class="info"><h3>Pec Deck Fly</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Shoulder-Press.gif" alt="Dumbell Shoulder Press"><div class="info"><h3>Dumbell Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lateral-Raise.gif" alt="Lateral Raise"><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Pushdown.gif" alt="Cable Pushdown"><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Seated-Dumbbell-Triceps-Extension.gif" alt="Overhead Triceps Extension"><div class="info"><h3>Overhead Triceps Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8633.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8634.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Incline Chest Fly Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8635.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Pec Deck Fly</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8636.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Dumbell Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8637.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8638.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8639.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Overhead Triceps Extension</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -483,12 +480,12 @@ details[open] .exercise-wrapper {
             <summary>Salı</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Lat-Pulldown.gif" alt="Lat Pulldown"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Close-Grip-Lat-Pulldown.gif" alt="V Bar Lat Pulldown"><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Incline-Reverse-Grip-Dumbbell-Row.gif" alt="Incline Reverse Grip Dumbbell Row"><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Rear-Delt-Machine-Flys.gif" alt="Reverse Pec Deck"><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Curl.gif" alt="Biceps Curl"><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Lever-Biceps-Curl.gif" alt="Biceps Machine Curl"><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8640.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8641.mp4" autoplay loop muted playsinline></video><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8642.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8645.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8647.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8646.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -497,11 +494,11 @@ details[open] .exercise-wrapper {
             <summary>Çarşamba</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Sled-Hack-Squat.gif" alt="Hack Squat"><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/LEG-EXTENSION.gif" alt="Leg Extension"><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Leg-Curl.gif" alt="Leg Curl"><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2015/11/Leg-Press.gif" alt="Leg Press"><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lunge.gif" alt="Lunge"><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+                    <div class="exercise"><video src="video/Img 8649.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8651.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8652.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8653.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8654.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
                 </div>
             </div>
         </details>
@@ -510,13 +507,13 @@ details[open] .exercise-wrapper {
             <summary>Perşembe</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Incline-Barbell-Bench-Press.gif" alt="Smith Machine Incline Press"><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Chest-Press-Machine.gif" alt="Chest Press"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Shoulder-Press.gif" alt="Shoulder Press"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lateral-Raise.gif" alt="Lateral Raise"><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Front-Raise.gif" alt="Front Raise"><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Seated-Dumbbell-Triceps-Extension.gif" alt="Overhead Extension"><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Pushdown.gif" alt="Single Rope Pushdown"><div class="info"><h3>Single Rope Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8655.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8633.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8636.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8637.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8657.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8639.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8638.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Triceps Pushdown</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -525,12 +522,12 @@ details[open] .exercise-wrapper {
             <summary>Cuma</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/08/Lever-Reverse-T-Bar-Row.gif" alt="Machine Row"><div class="info"><h3>Cable Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Seated-Cable-Row.gif" alt="Seated Row"><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Lat-Pulldown.gif" alt="Lat Pulldown"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Rear-Delt-Machine-Flys.gif" alt="Reverse Pec Deck"><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/04/Lever-Preacher-Curl.gif" alt="Preacher Curl"><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Hammer-Curl.gif" alt="Hammer Curl"><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8661.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Dumble Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8658.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8640.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8645.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8660.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8659.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -539,33 +536,32 @@ details[open] .exercise-wrapper {
             <summary>Cumartesi (Opsiyonel)</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Sled-Hack-Squat.gif" alt="Hack Squat"><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/LEG-EXTENSION.gif" alt="Leg Extension"><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Leg-Curl.gif" alt="Leg Curl"><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://fitnessprogramer.com/wp-content/uploads/2015/11/Leg-Press.gif" alt="Leg Press"><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lunge.gif" alt="Lunge"><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+                   <div class="exercise"><video src="video/Img 8649.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8651.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8652.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8653.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8654.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
                 </div>
             </div>
         </details>
     </div>
 
-    <!-- ORTA SEVİYE -->
     <div id="intermediate" class="program-content">
         <p class="section-title">Orta Seviye Antrenman Listesi</p>
         <details>
-            <summary>Push 1</summary>
+            <summary>Daha</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Chest-Press-Machine.gif" alt="Chest Press"><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Seated-Dumbbell-Press.gif" alt="Shoulder Press"><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8671.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8672.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
         <details>
-            <summary>Pull 1</summary>
+            <summary>Eklenmedi</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><img src="https://www.fitnessprogramer.com/wp-content/uploads/2021/02/Lat-Pulldown.gif" alt="Lat Pulldown"><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8673.mp4" autoplay loop muted playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -573,22 +569,19 @@ details[open] .exercise-wrapper {
 
 </div>
 
-<!-- BÜYÜK GIF ÖNİZLEME PENCERESİ -->
 <div id="gifPreviewModal" class="gif-preview-modal">
     <div class="gif-preview-content">
         <span id="closeGifModal" class="gif-preview-close">&times;</span>
-        <img id="modalImg" src="" alt="Önizleme">
+        <div id="modalMediaContainer"></div>
         <h3 id="modalExerciseName">Hareket Adı</h3>
     </div>
 </div>
 
-<!-- ALT PWA YÜKLEME BANNERI -->
 <div id="installBanner" class="pwa-install-banner">
     <span>Uygulama</span>
     <button id="installBtn" class="pwa-btn">Yükle</button>
 </div>
 
-<!-- ADIM ADIM INTERAKTIF YÜKLEME MODALI -->
 <div id="installModal" class="pwa-modal">
     <div class="pwa-modal-content">
         <span id="closeModal" class="pwa-modal-close">&times;</span>
@@ -661,26 +654,31 @@ document.querySelectorAll('details').forEach((el) => {
     });
 });
 
-// --- GIF POPUP FONKSİYONU ---
+// --- MEDYA POPUP FONKSİYONU (.mp4 UYUMLU VİDEO SEÇİCİ) ---
 const gifModal = document.getElementById('gifPreviewModal');
-const modalImg = document.getElementById('modalImg');
+const mediaContainer = document.getElementById('modalMediaContainer');
 const modalExerciseName = document.getElementById('modalExerciseName');
 const closeGifModal = document.getElementById('closeGifModal');
 
 document.querySelectorAll('.exercise').forEach(item => {
     item.addEventListener('click', () => {
-        const gifUrl = item.querySelector('img').src;
+        const videoEl = item.querySelector('video');
+        const mediaUrl = videoEl ? videoEl.src : "";
         const exerciseName = item.querySelector('.info h3').innerText;
         
-        modalImg.src = gifUrl;
         modalExerciseName.innerText = exerciseName;
+        
+        if (mediaUrl) {
+            mediaContainer.innerHTML = `<video src="${mediaUrl}" autoplay loop muted playsinline controls style="width:100%; height:auto; max-height:320px; object-fit:contain; border-radius:20px; background:#000; border:1px solid var(--glass-border);"></video>`;
+        }
+        
         gifModal.classList.add('open');
     });
 });
 
 function closeModalFunction() {
     gifModal.classList.remove('open');
-    setTimeout(() => { modalImg.src = ""; }, 300); 
+    setTimeout(() => { mediaContainer.innerHTML = ""; }, 300); 
 }
 
 closeGifModal.addEventListener('click', closeModalFunction);
@@ -731,41 +729,33 @@ const banner = document.getElementById('installBanner');
 const installBtn = document.getElementById('installBtn');
 const closeModalElement = document.getElementById('closeModal');
 
-if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-    banner.style.display = 'none';
-} else {
-    banner.classList.add('show');
-}
-
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
+    if(banner) banner.classList.add('show');
 });
 
-installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-            banner.classList.remove('show');
+if(installBtn) {
+    installBtn.addEventListener('click', () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    if(banner) banner.classList.remove('show');
+                }
+                deferredPrompt = null;
+            });
+        } else {
+            if(modal) modal.classList.add('open');
         }
-        deferredPrompt = null;
-    } else {
-        currentStep = 1; 
-        updateSteps();
-        modal.classList.add('open');
-    }
-});
+    });
+}
 
-closeModalElement.addEventListener('click', () => modal.classList.remove('open'));
-window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(err => console.log(err));
-  });
+if(closeModalElement) {
+    closeModalElement.addEventListener('click', () => {
+        if(modal) modal.classList.remove('open');
+    });
 }
 </script>
-
 </body>
 </html>
