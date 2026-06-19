@@ -192,17 +192,18 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
 .gif-preview-modal, .pwa-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(2, 4, 8, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(2, 4, 8, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     display: flex; justify-content: center; align-items: center;
     z-index: 11000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
 .gif-preview-modal.open, .pwa-modal.open { opacity: 1; pointer-events: auto; }
 
+/* Video Önizleme Kapsayıcısı */
 .gif-preview-content {
-    background: rgba(13, 27, 42, 0.85);
-    padding: 25px; border-radius: 28px; max-width: 450px; width: 90%; position: relative; text-align: center;
+    background: transparent;
+    padding: 15px; border-radius: 28px; max-width: 450px; width: 90%; position: relative; text-align: center;
 }
 
 .pwa-modal-content {
@@ -211,15 +212,37 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
     padding: 25px 20px; border-radius: 28px; max-width: 380px; width: 90%; position: relative; text-align: center;
 }
 
-.gif-preview-close, .pwa-modal-close {
-    position: absolute; font-size: 28px; cursor: pointer; color: #ffffff;
+/* Yenilenen Kapatma Çarpısı - Video Üzerinde Sabit */
+.gif-preview-close {
+    position: absolute; 
+    top: -20px; 
+    right: 15px; 
+    font-size: 36px; 
+    cursor: pointer; 
+    color: #ffffff;
+    z-index: 12000;
+    background: rgba(0, 0, 0, 0.5);
+    width: 45px;
+    height: 45px;
+    line-height: 40px;
+    border-radius: 50px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.gif-preview-close { top: -50px; right: 0; }
-.pwa-modal-close { top: 15px; right: 20px; color: var(--text-muted); }
+.pwa-modal-close { position: absolute; top: 15px; right: 20px; color: var(--text-muted); font-size: 28px; cursor: pointer; }
 
-.modal-video-wrapper { position: relative; width: 100%; border-radius: 20px; overflow: hidden; }
+.modal-video-wrapper { position: relative; width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 .gif-preview-content video { width: 100%; height: auto; border-radius: 20px; transform: translateZ(0); -webkit-transform: translateZ(0); }
-#modalExerciseName { margin: 15px 0 0 0; font-family: 'Oswald', sans-serif; color: var(--primary-orange); }
+#modalExerciseName { margin: 20px 0 0 0; font-family: 'Oswald', sans-serif; color: #ffffff; font-size: 22px; letter-spacing: 1px; }
+
+/* Mobil Bilgilendirme Yazısı */
+.modal-hint-text {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-weight: 500;
+}
 
 /* --- OS VE REHBER SEKMELERI --- */
 .os-selector {
@@ -290,6 +313,7 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
         <button class="level-btn" onclick="switchLevel('intermediate')">ORTA SEVİYE</button>
     </div>
 
+    <!-- Başlangıç Seviyesi -->
     <div id="beginner" class="program-content active">
         <p class="section-title">Başlangıç Seviyesi Antrenman Listesi</p>
         <details>
@@ -372,6 +396,7 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
         </details>
     </div>
 
+    <!-- Orta Seviye -->
     <div id="intermediate" class="program-content">
         <p class="section-title">Orta Seviye Antrenman Listesi</p>
         <details>
@@ -394,19 +419,23 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
     </div>
 </div>
 
+<!-- Video Detay Modalı (PRATİK KAPATMA DESTEKLİ) -->
 <div id="gifPreviewModal" class="gif-preview-modal">
     <div class="gif-preview-content">
         <span id="closeGifModal" class="gif-preview-close">&times;</span>
         <div id="modalMediaContainer" class="modal-video-wrapper"></div>
         <h3 id="modalExerciseName">Hareket Adı</h3>
+        <span class="modal-hint-text">Kapatmak için ekranda herhangi bir yere dokunun veya aşağı kaydırın</span>
     </div>
 </div>
 
+<!-- Alt Sabit Banner -->
 <div id="installBanner" class="pwa-install-banner" style="display: none;">
     <span>Uygulamayı indirin</span>
     <button id="installBtn" class="pwa-btn">Yükle</button>
 </div>
 
+<!-- PWA Kurulum Modalı -->
 <div id="installModal" class="pwa-modal">
     <div class="pwa-modal-content">
         <span id="closeModal" class="pwa-modal-close">&times;</span>
@@ -507,7 +536,7 @@ document.querySelectorAll('details').forEach((el) => {
     });
 });
 
-// Büyük Video Önizleme Modalı
+// Büyük Video Önizleme Modalı Kontrolleri
 const gifModal = document.getElementById('gifPreviewModal');
 const mediaContainer = document.getElementById('modalMediaContainer');
 const modalExerciseName = document.getElementById('modalExerciseName');
@@ -519,9 +548,7 @@ document.querySelectorAll('.exercise').forEach(item => {
         let mediaUrl = videoEl ? videoEl.getAttribute('src') : "";
         
         if (mediaUrl) {
-            // Önbellekten kalitesiz video gelmesini önlemek ve optimize takısını temizlemek için kesin mantık
             mediaUrl = mediaUrl.replace('_optimized.mp4', '.mp4');
-            // Tarayıcının yeni yüksek kaliteli videoyu sunucudan çekmeye zorlaması için zaman damgası ekledik (?t=...)
             mediaUrl = mediaUrl + '?t=' + new Date().getTime();
         }
         
@@ -529,19 +556,45 @@ document.querySelectorAll('.exercise').forEach(item => {
         modalExerciseName.innerText = exerciseName;
         
         if (mediaUrl) {
-            // İSTEĞİNİZ: controls (ses, oynatma ve ilerletme barı) tamamen KALDIRILDI.
             mediaContainer.innerHTML = `<video src="${mediaUrl}" autoplay loop muted playsinline style="width:100%; border-radius:20px; display:block;"></video>`;
         }
         gifModal.classList.add('open');
     });
 });
 
+// MODALI KAPATMA FONKSİYONU
 function closeModalFunction() {
     gifModal.classList.remove('open');
     setTimeout(() => { mediaContainer.innerHTML = ""; }, 300); 
 }
-closeGifModal.addEventListener('click', closeModalFunction);
-gifModal.addEventListener('click', (e) => { if (e.target === gifModal) closeModalFunction(); });
+
+// 1. Çarpı İşaretine Tıklayınca Kapanma
+closeGifModal.addEventListener('click', (e) => {
+    e.stopPropagation(); // Diğer tıklama eventlerini tetiklemesin
+    closeModalFunction();
+});
+
+// 2. Ekranın Herhangi Bir Yerine (Video Dahil) Tıklayınca Pratik Kapanma
+gifModal.addEventListener('click', () => {
+    closeModalFunction();
+});
+
+// 3. Mobil Cihazlar İçin Aşağı Kaydırınca (Swipe Down) Kapanma Desteği
+let touchstartY = 0;
+let touchendY = 0;
+
+gifModal.addEventListener('touchstart', e => {
+    touchstartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+gifModal.addEventListener('touchend', e => {
+    touchendY = e.changedTouches[0].screenY;
+    // Eğer kullanıcı parmağını yukarıdan aşağıya en az 50 piksel kaydırdıysa kapat
+    if (touchendY - touchstartY > 50) {
+        closeModalFunction();
+    }
+}, { passive: true });
+
 
 // PWA Kurulum Adımları (iOS)
 let currentStep = 1;
