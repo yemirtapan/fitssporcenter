@@ -267,7 +267,7 @@ details[open] .exercise-wrapper {
     transform: scale(1.01);
 }
 
-/* Küçük resimler (liste videoları) alanı kaplar ve siyahlık bırakmaz */
+/* Küçük resimler (liste videoları) alanı kaplar ve iOS siyahlık hatasını engeller */
 .exercise video {
     width: 110px;
     height: 85px;
@@ -277,6 +277,8 @@ details[open] .exercise-wrapper {
     border: 1px solid rgba(255,255,255,0.05);
     transition: transform 0.3s ease;
     pointer-events: none;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0); /* iOS donanım ivmesini zorlar, siyah ekranı önler */
 }
 
 .exercise:hover video {
@@ -362,8 +364,8 @@ details[open] .exercise-wrapper {
 .modal-video-wrapper {
     position: relative;
     width: 100%;
-    border-radius: 20px; /* Kenar yumuşatma buraya sabitlendi */
-    overflow: hidden;    /* Video taşmalarını ve keskin köşelerini tamamen gizler */
+    border-radius: 20px;
+    overflow: hidden;
     background: transparent;
 }
 
@@ -372,10 +374,12 @@ details[open] .exercise-wrapper {
     width: 100%;
     height: auto;
     max-height: 70vh;
-    object-fit: cover; /* Videoyu tam sığdırarak boşluk kalmasını engeller */
+    object-fit: cover;
     display: block;
     pointer-events: none;
     border-radius: 20px;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 /* --- PWA BANNER VE MODAL --- */
@@ -475,13 +479,13 @@ details[open] .exercise-wrapper {
             <summary>Pazartesi</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8633.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8634.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Incline Chest Fly Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8635.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Pec Deck Fly</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8636.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Dumbell Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8637.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8638.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8639.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Overhead Triceps Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8633.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8634.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Incline Chest Fly Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8635.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Pec Deck Fly</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8636.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Dumbell Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8637.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8638.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8639.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Overhead Triceps Extension</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -490,12 +494,12 @@ details[open] .exercise-wrapper {
             <summary>Salı</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8640.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8641.mp4" preload="auto" muted playsinline></video><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8642.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8645.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8647.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8646.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8640.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8641.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8642.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8645.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8647.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8646.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -504,11 +508,11 @@ details[open] .exercise-wrapper {
             <summary>Çarşamba</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8649.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8651.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8652.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8653.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8654.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+                    <div class="exercise"><video src="Img 8649.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8651.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8652.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8653.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8654.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
                 </div>
             </div>
         </details>
@@ -517,13 +521,13 @@ details[open] .exercise-wrapper {
             <summary>Perşembe</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8655.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8633.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="video/Img 8636.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8637.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8657.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8639.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8638.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Triceps Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8655.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8633.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="video/Img 8636.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8637.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8657.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8639.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8638.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Triceps Pushdown</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -532,12 +536,12 @@ details[open] .exercise-wrapper {
             <summary>Cuma</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8661.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Dumble Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8658.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8640.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8645.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8660.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8659.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8661.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Dumble Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8658.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8640.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8645.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8660.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8659.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -546,11 +550,11 @@ details[open] .exercise-wrapper {
             <summary>Cumartesi (Opsiyonel)</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                   <div class="exercise"><video src="Img 8649.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8651.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8652.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8653.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8654.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+                   <div class="exercise"><video src="Img 8649.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8651.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8652.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8653.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8654.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
                 </div>
             </div>
         </details>
@@ -562,8 +566,8 @@ details[open] .exercise-wrapper {
             <summary>Daha</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8671.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8672.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8671.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8672.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -571,7 +575,7 @@ details[open] .exercise-wrapper {
             <summary>Eklenmedi</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8673.mp4" preload="auto" muted playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8673.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -679,7 +683,7 @@ document.querySelectorAll('.exercise').forEach(item => {
         modalExerciseName.innerText = exerciseName;
         
         if (mediaUrl) {
-            mediaContainer.innerHTML = `<video src="${mediaUrl}" autoplay loop muted playsinline></video>`;
+            mediaContainer.innerHTML = `<video src="${mediaUrl}" autoplay loop muted playsinline webkit-playsinline></video>`;
         }
         
         gifModal.classList.add('open');
@@ -766,6 +770,41 @@ if(closeModalElement) {
         if(modal) modal.classList.remove('open');
     });
 }
+
+// --- SADECE EKRANDA GÖRÜNEN VİDEOYU OYNATMA (LAZY PLAYING / ANTI-FREEZE) ---
+document.addEventListener("DOMContentLoaded", function() {
+    const allVideos = document.querySelectorAll('.exercise video');
+    
+    // İlk açılışta donmayı engellemek için tüm liste videolarını duraklat (iOS ilk kareyi hafızaya alır)
+    allVideos.forEach(video => {
+        video.pause();
+    });
+
+    // Videoların ekrana girip çıkma durumunu izleyen Observer
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            
+            if (entry.isIntersecting) {
+                // Video ekrana tam girdiğinde oynat
+                video.play().catch(error => {
+                    console.log("Video otomatik oynatılamadı:", error);
+                });
+            } else {
+                // Videodan uzaklaşıldığında veya ekrandan çıktığında anında durdur (RAM kurtarır)
+                video.pause();
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5 // Videonun yarısı ekranda göründüğü an çalışmaya başlar
+    });
+
+    allVideos.forEach(video => {
+        videoObserver.observe(video);
+    });
+});
 </script>
 </body>
 </html>
