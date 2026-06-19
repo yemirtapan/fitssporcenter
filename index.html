@@ -17,17 +17,13 @@
 
 <style>
 :root {
-    --bg-main: #030712; /* Ultra koyu gece arka planı */
-    --text-muted: #94a3b8; /* Slate Gri */
-    
-    /* Glassmorphic Ortak Değerleri */
-    --glass-bg: rgba(13, 27, 42, 0.45); /* Gece mavisi transparan cam */
+    --bg-main: #030712;
+    --text-muted: #94a3b8;
+    --glass-bg: rgba(13, 27, 42, 0.45);
     --glass-border: rgba(255, 255, 255, 0.07);
     --glass-blur: blur(16px);
-    
-    /* Yeni Turuncu Tema Renkleri */
-    --primary-orange: #fb8500;       /* Canlı Sporcu Turuncusu */
-    --primary-orange-dark: #e06d00;  /* Koyu Turuncu (Geçişler İçin) */
+    --primary-orange: #fb8500;
+    --primary-orange-dark: #e06d00;
     --primary-glow: rgba(251, 133, 0, 0.3);
 }
 
@@ -51,7 +47,6 @@ header {
     -webkit-backdrop-filter: var(--glass-blur);
     border-bottom: 1px solid var(--glass-border);
     box-shadow: 0 4px 30px rgba(0,0,0,0.4);
-    animation: fadeInDown 0.6s ease-out;
 }
 
 header h1 {
@@ -63,7 +58,6 @@ header h1 {
     background: linear-gradient(135deg, var(--primary-orange) 0%, #ffb703 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(251, 133, 0, 0.2);
 }
 
 .container {
@@ -72,14 +66,12 @@ header h1 {
     padding: 25px 20px 100px 20px;
 }
 
-/* --- İLETİŞİM LİNKLERİ --- */
 .contact-links {
     display: flex;
     justify-content: center;
     gap: 30px;
     margin-bottom: 25px;
     font-size: 13px;
-    animation: fadeIn 0.8s ease-out;
 }
 
 .contact-text-link {
@@ -89,13 +81,6 @@ header h1 {
     color: var(--text-muted);
     text-decoration: none;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.contact-text-link:hover {
-    color: var(--primary-orange);
-    transform: scale(1.05);
 }
 
 .contact-text-link svg {
@@ -104,7 +89,6 @@ header h1 {
     fill: currentColor;
 }
 
-/* --- SEVİYE SEÇİM BUTONLARI --- */
 .level-selector {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -116,8 +100,6 @@ header h1 {
     padding: 6px;
     border-radius: 20px;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    animation: fadeIn 0.9s ease-out;
 }
 
 .level-btn {
@@ -128,15 +110,8 @@ header h1 {
     font-family: 'Oswald', sans-serif;
     font-size: 15px;
     font-weight: 500;
-    letter-spacing: 1px;
     border-radius: 14px;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.level-btn:hover {
-    color: #ffffff;
-    background: rgba(255,255,255,0.02);
 }
 
 .level-btn.active {
@@ -144,29 +119,12 @@ header h1 {
     color: #ffffff;
     font-weight: 700;
     box-shadow: 0 6px 24px var(--primary-glow);
-    transform: scale(1.02);
 }
 
-/* --- PROGRAM İÇERİK ALANLARI --- */
-.program-content {
-    display: none;
-}
+.program-content { display: none; }
+.program-content.active { display: block; }
+.section-title { text-align: center; color: var(--text-muted); font-size: 13px; margin-bottom: 20px; text-transform: uppercase; }
 
-.program-content.active {
-    display: block;
-}
-
-.section-title {
-    text-align: center; 
-    color: var(--text-muted); 
-    font-size: 13px; 
-    margin-bottom: 20px;
-    font-weight: 500;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-}
-
-/* --- AKORDEON (DETAILS) --- */
 details {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -175,19 +133,6 @@ details {
     border-radius: 20px;
     overflow: hidden; 
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
-    animation: fadeInUp 0.5s ease-out both;
-}
-
-details:hover {
-    border-color: rgba(251, 133, 0, 0.25);
-    transform: translateY(-2px);
-}
-
-details[open] {
-    border-color: rgba(251, 133, 0, 0.45);
-    box-shadow: 0 12px 40px rgba(251, 133, 0, 0.1);
 }
 
 summary {
@@ -195,19 +140,10 @@ summary {
     font-family: 'Oswald', sans-serif;
     font-size: 19px;
     font-weight: 500;
-    letter-spacing: 1px;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.01);
-    color: #ffffff;
-    list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background 0.3s ease;
-}
-
-summary:hover {
-    background: rgba(255, 255, 255, 0.03);
 }
 
 summary::after {
@@ -217,39 +153,15 @@ summary::after {
     border-right: 2px solid var(--text-muted);
     border-bottom: 2px solid var(--text-muted);
     transform: rotate(45deg);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
 }
 
-details[open] summary {
-    color: var(--primary-orange);
-    background: rgba(251, 133, 0, 0.03);
-}
+details[open] summary { color: var(--primary-orange); }
+details[open] summary::after { transform: rotate(-135deg); border-color: var(--primary-orange); }
+summary::-webkit-details-marker { display: none; }
 
-details[open] summary::after {
-    transform: rotate(-135deg);
-    border-color: var(--primary-orange);
-}
-
-summary::-webkit-details-marker {
-    display: none;
-}
-
-.exercise-wrapper {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-details[open] .exercise-wrapper {
-    grid-template-rows: 1fr;
-}
-
-.exercise-list {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.2);
-}
+.exercise-wrapper { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease; }
+details[open] .exercise-wrapper { grid-template-rows: 1fr; }
+.exercise-list { overflow: hidden; display: flex; flex-direction: column; background: rgba(0, 0, 0, 0.2); }
 
 .exercise {
     display: grid;
@@ -259,191 +171,100 @@ details[open] .exercise-wrapper {
     border-top: 1px solid var(--glass-border);
     align-items: center;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.exercise:hover {
-    background: rgba(251, 133, 0, 0.03);
-    transform: scale(1.01);
-}
-
-/* Küçük resimler (liste videoları) alanı kaplar ve iOS siyahlık hatasını engeller */
 .exercise video {
     width: 110px;
     height: 85px;
     object-fit: cover;
     border-radius: 14px;
     background: #000;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: transform 0.3s ease;
-    pointer-events: none;
     transform: translateZ(0);
-    -webkit-transform: translateZ(0); /* iOS donanım ivmesini zorlar, siyah ekranı önler */
+    -webkit-transform: translateZ(0);
 }
 
-.exercise:hover video {
-    transform: scale(1.04);
-}
+.info h3 { margin: 0 0 10px 0; font-size: 16px; color: #ffffff; }
+.sets { display: inline-block; color: var(--primary-orange); font-size: 11px; font-weight: 700; background: rgba(251, 133, 0, 0.1); padding: 5px 14px; border-radius: 30px; border: 1px solid rgba(251, 133, 0, 0.25); }
 
-.info h3 {
-    margin: 0 0 10px 0;
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    letter-spacing: 0.3px;
-}
-
-.sets {
-    display: inline-block;
-    color: var(--primary-orange);
-    font-size: 11px;
-    font-weight: 700;
-    background: rgba(251, 133, 0, 0.1);
-    padding: 5px 14px;
-    border-radius: 30px;
-    border: 1px solid rgba(251, 133, 0, 0.25);
-    letter-spacing: 0.5px;
-}
-
-/* --- ANIMASYONLAR --- */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-/* --- BÜYÜK VİDEO ÖNİZLEME MODAL --- */
-.gif-preview-modal {
+/* --- MODALLAR --- */
+.gif-preview-modal, .pwa-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(2, 4, 8, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     display: flex; justify-content: center; align-items: center;
-    z-index: 11000;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.3s ease;
+    z-index: 11000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
-
-.gif-preview-modal.open { opacity: 1; pointer-events: auto; }
+.gif-preview-modal.open, .pwa-modal.open { opacity: 1; pointer-events: auto; }
 
 .gif-preview-content {
     background: rgba(13, 27, 42, 0.85);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 28px;
-    max-width: 450px;
-    width: 90%;
-    position: relative;
-    text-align: center;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-    transform: scale(0.95);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    padding: 25px; border-radius: 28px; max-width: 450px; width: 90%; position: relative; text-align: center;
 }
-
-.gif-preview-close {
-    position: absolute;
-    top: -50px; right: 0;
-    font-size: 30px; cursor: pointer; color: #ffffff;
-    background: rgba(255,255,255,0.1);
-    width: 42px; height: 42px; line-height: 38px;
-    border-radius: 50%; text-align: center;
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-.gif-preview-content h3 {
-    margin: 18px 0 5px 0;
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--primary-orange);
-    letter-spacing: 0.5px;
-}
-
-/* Videonun etrafındaki kutunun kenarlarını yuvarladık ve taşan kısımları gizledik */
-.modal-video-wrapper {
-    position: relative;
-    width: 100%;
-    border-radius: 20px;
-    overflow: hidden;
-    background: transparent;
-}
-
-/* Büyük video ayarları */
-.gif-preview-content video {
-    width: 100%;
-    height: auto;
-    max-height: 70vh;
-    object-fit: cover;
-    display: block;
-    pointer-events: none;
-    border-radius: 20px;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-}
-
-/* --- PWA BANNER VE MODAL --- */
-.pwa-install-banner {
-    position: fixed;
-    bottom: 25px; left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: rgba(13, 27, 42, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px 20px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-    z-index: 9999;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25);
-}
-
-.pwa-install-banner.show { transform: translateX(-50%) translateY(0); }
-
-.pwa-install-banner span { font-size: 13px; font-weight: 600; color: #ffffff; }
-
-.pwa-btn {
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-dark) 100%);
-    color: #ffffff; border: none; padding: 7px 16px; font-weight: 700;
-    border-radius: 20px; cursor: pointer; font-size: 12px; transition: transform 0.2s;
-    box-shadow: 0 4px 12px var(--primary-glow);
-}
-.pwa-btn:hover { transform: scale(1.05); }
-
-.pwa-modal {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-}
-.pwa-modal.open { opacity: 1; pointer-events: auto; }
 
 .pwa-modal-content {
-    background: rgba(13, 27, 42, 0.9);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    background: rgba(13, 27, 42, 0.95);
     border: 1px solid var(--glass-border);
-    padding: 25px 20px; border-radius: 28px;
-    max-width: 360px; width: 85%; max-height: 85vh;
-    overflow-y: auto; position: relative; text-align: center;
+    padding: 25px 20px; border-radius: 28px; max-width: 380px; width: 90%; position: relative; text-align: center;
 }
 
-.pwa-modal-close { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-muted); }
-.screenshot-container { margin: 15px 0; background: rgba(255, 255, 255, 0.02); padding: 12px; border-radius: 20px; border: 1px solid var(--glass-border); }
-.screenshot-step { display: none; animation: fadeIn 0.3s ease; }
+.gif-preview-close, .pwa-modal-close {
+    position: absolute; font-size: 28px; cursor: pointer; color: #ffffff;
+}
+.gif-preview-close { top: -50px; right: 0; }
+.pwa-modal-close { top: 15px; right: 20px; color: var(--text-muted); }
+
+.modal-video-wrapper { position: relative; width: 100%; border-radius: 20px; overflow: hidden; }
+.gif-preview-content video { width: 100%; height: auto; border-radius: 20px; transform: translateZ(0); -webkit-transform: translateZ(0); }
+#modalExerciseName { margin: 15px 0 0 0; font-family: 'Oswald', sans-serif; color: var(--primary-orange); }
+
+/* --- OS VE REHBER SEKMELERI --- */
+.os-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 15px 0;
+}
+.os-btn {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+    border: 1px solid var(--glass-border);
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+.os-btn.active {
+    background: var(--primary-orange);
+    color: #ffffff;
+    border-color: transparent;
+}
+
+.os-panel { display: none; }
+.os-panel.active { display: block; }
+
+.screenshot-container { margin: 15px 0; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 20px; border: 1px solid var(--glass-border); }
+.screenshot-step { display: none; }
 .screenshot-step.active { display: block; }
-.screenshot-step img { width: 100%; height: auto; max-height: 360px; object-fit: contain; border-radius: 12px; }
-.step-text { font-size: 13px; font-weight: 600; color: var(--primary-orange); margin-top: 12px; display: block; min-height: 36px; }
+.screenshot-step img { width: 100%; height: auto; max-height: 320px; object-fit: contain; border-radius: 12px; }
+.step-text { font-size: 13px; font-weight: 600; color: #ffffff; margin-top: 12px; display: block; min-height: 40px; }
+
 .modal-nav-buttons { display: flex; justify-content: space-between; gap: 10px; margin-top: 15px; }
-.nav-btn { flex: 1; background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid var(--glass-border); padding: 12px; font-weight: 600; font-size: 13px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease; }
+.nav-btn { flex: 1; background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid var(--glass-border); padding: 12px; font-weight: 600; font-size: 13px; border-radius: 14px; cursor: pointer; }
 .nav-btn:disabled { opacity: 0.2; cursor: not-allowed; }
-.nav-btn.next-btn { background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-dark) 100%); color: #ffffff; font-weight: 700; border: none; box-shadow: 0 4px 12px var(--primary-glow); }
+.nav-btn.next-btn { background: var(--primary-orange); border: none; font-weight: 700; }
+
+/* --- ALT SABIT BANNER --- */
+.pwa-install-banner {
+    position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
+    background: rgba(13, 27, 42, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 30px;
+    display: flex; align-items: center; gap: 15px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); z-index: 9999;
+}
+.pwa-install-banner span { font-size: 13px; font-weight: 600; color: #ffffff; }
+.pwa-btn { background: var(--primary-orange); color: #ffffff; border: none; padding: 7px 16px; font-weight: 700; border-radius: 20px; cursor: pointer; font-size: 12px; }
 </style>
 </head>
 
@@ -454,17 +275,12 @@ details[open] .exercise-wrapper {
 </header>
 
 <div class="container">
-
     <div class="contact-links">
         <a href="https://www.instagram.com/fit_sporcentermalkara/" target="_blank" class="contact-text-link">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
             Instagram
         </a>
-        <a href="tel:05302821759" class="contact-text-link">
-            <span>📞</span> 0530 282 17 59
-        </a>
+        <a href="tel:05302821759" class="contact-text-link"><span>📞</span> 0530 282 17 59</a>
     </div>
 
     <div class="level-selector">
@@ -474,87 +290,81 @@ details[open] .exercise-wrapper {
 
     <div id="beginner" class="program-content active">
         <p class="section-title">Başlangıç Seviyesi Antrenman Listesi</p>
-        
         <details>
             <summary>Pazartesi</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8633.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8634.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Incline Chest Fly Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8635.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Pec Deck Fly</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8636.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Dumbell Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8637.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8638.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8639.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Overhead Triceps Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8633.mp4" preload="metadata"></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8634.mp4" preload="metadata"></video><div class="info"><h3>Incline Chest Fly Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8635.mp4" preload="metadata"></video><div class="info"><h3>Pec Deck Fly</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8636.mp4" preload="metadata"></video><div class="info"><h3>Dumbell Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8637.mp4" preload="metadata"></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8638.mp4" preload="metadata"></video><div class="info"><h3>Cable Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8639.mp4" preload="metadata"></video><div class="info"><h3>Overhead Triceps Extension</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
-
         <details>
             <summary>Salı</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8640.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8641.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8642.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8645.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8647.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8646.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8640.mp4" preload="metadata"></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8641.mp4" preload="metadata"></video><div class="info"><h3>V Bar Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8642.mp4" preload="metadata"></video><div class="info"><h3>Single Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8645.mp4" preload="metadata"></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8647.mp4" preload="metadata"></video><div class="info"><h3>Biceps Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8646.mp4" preload="metadata"></video><div class="info"><h3>Machine Curl</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
-
         <details>
             <summary>Çarşamba</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8649.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8651.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8652.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8653.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8654.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+                    <div class="exercise"><video src="Img 8649.mp4" preload="metadata"></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8651.mp4" preload="metadata"></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8652.mp4" preload="metadata"></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8653.mp4" preload="metadata"></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8654.mp4" preload="metadata"></video><div class="info"><h3>Lunge</h3><div class="sets">4 x Tükeniş</div></div></div>
                 </div>
             </div>
         </details>
-
         <details>
             <summary>Perşembe</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8655.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8633.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8636.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8637.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8657.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8639.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8638.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Triceps Pushdown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8655.mp4" preload="metadata"></video><div class="info"><h3>Smith Machine Incline Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8633.mp4" preload="metadata"></video><div class="info"><h3>Chest Press Machine</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8636.mp4" preload="metadata"></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8637.mp4" preload="metadata"></video><div class="info"><h3>Lateral Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8657.mp4" preload="metadata"></video><div class="info"><h3>Front Raise</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8639.mp4" preload="metadata"></video><div class="info"><h3>Overhead Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8638.mp4" preload="metadata"></video><div class="info"><h3>Triceps Pushdown</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
-
         <details>
             <summary>Cuma</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8661.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Dumble Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8658.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8640.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8645.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8660.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8659.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8661.mp4" preload="metadata"></video><div class="info"><h3>Dumble Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8658.mp4" preload="metadata"></video><div class="info"><h3>Seated Row</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8640.mp4" preload="metadata"></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8645.mp4" preload="metadata"></video><div class="info"><h3>Reverse Pec Deck</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8660.mp4" preload="metadata"></video><div class="info"><h3>Preacher Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8659.mp4" preload="metadata"></video><div class="info"><h3>Hammer Curl</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
-
         <details>
             <summary>Cumartesi (Opsiyonel)</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                   <div class="exercise"><video src="Img 8649.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8651.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8652.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8653.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8654.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lunge</h3><div class="sets">4x Tükeniş</div></div></div>
+                    <div class="exercise"><video src="Img 8649.mp4" preload="metadata"></video><div class="info"><h3>Hack Squat</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8651.mp4" preload="metadata"></video><div class="info"><h3>Leg Extension</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8652.mp4" preload="metadata"></video><div class="info"><h3>Leg Curl</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8653.mp4" preload="metadata"></video><div class="info"><h3>Leg Press (Opsiyonel)</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8654.mp4" preload="metadata"></video><div class="info"><h3>Lunge</h3><div class="sets">4 x Tükeniş</div></div></div>
                 </div>
             </div>
         </details>
@@ -566,8 +376,8 @@ details[open] .exercise-wrapper {
             <summary>Daha</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8671.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
-                    <div class="exercise"><video src="Img 8672.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8671.mp4" preload="metadata"></video><div class="info"><h3>Chest Press</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8672.mp4" preload="metadata"></video><div class="info"><h3>Shoulder Press</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
@@ -575,12 +385,11 @@ details[open] .exercise-wrapper {
             <summary>Eklenmedi</summary>
             <div class="exercise-wrapper">
                 <div class="exercise-list">
-                    <div class="exercise"><video src="Img 8673.mp4" preload="auto" loop muted playsinline webkit-playsinline></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
+                    <div class="exercise"><video src="Img 8673.mp4" preload="metadata"></video><div class="info"><h3>Lat Pulldown</h3><div class="sets">4x10-12</div></div></div>
                 </div>
             </div>
         </details>
     </div>
-
 </div>
 
 <div id="gifPreviewModal" class="gif-preview-modal">
@@ -599,55 +408,77 @@ details[open] .exercise-wrapper {
 <div id="installModal" class="pwa-modal">
     <div class="pwa-modal-content">
         <span id="closeModal" class="pwa-modal-close">&times;</span>
-        <h3 style="color:var(--primary-orange); font-family:'Oswald', sans-serif; margin:0 0 5px 0; letter-spacing:1px;">NASIL YÜKLENİR?</h3>
+        <h3 style="color:var(--primary-orange); font-family:'Oswald', sans-serif; margin:0; letter-spacing:1px;">UYGULAMAYI YÜKLE</h3>
         
-        <div class="screenshot-container">
-            <div class="screenshot-step active" data-step="1">
-                <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios1.jpeg" alt="Adım 1">
-                <span class="step-text">Adım 1: Safari tarayıcısının altındaki "Paylaş" (Ok işareti) butonuna dokunun.</span>
+        <div class="os-selector">
+            <button id="tabIosBtn" class="os-btn active" onclick="switchOS('ios')">iOS (iPhone)</button>
+            <button id="tabAndroidBtn" class="os-btn" onclick="switchOS('android')">Android</button>
+        </div>
+
+        <div id="iosPanel" class="os-panel active">
+            <div class="screenshot-container">
+                <div class="screenshot-step active" data-step="1">
+                    <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios1.jpeg" alt="Adım 1">
+                    <span class="step-text">Adım 1: Safari tarayıcısının altındaki "Paylaş" (Ok işareti) butonuna dokunun.</span>
+                </div>
+                <div class="screenshot-step" data-step="2">
+                    <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios2.jpeg" alt="Adım 2">
+                    <span class="step-text">Adım 2: Açılan menüyü yukarıya doğru kaydırın.</span>
+                </div>
+                <div class="screenshot-step" data-step="3">
+                    <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios3.jpeg" alt="Adım 3">
+                    <span class="step-text">Adım 3: Listeden "Ana Ekrana Ekle" seçeneğini bulun ve seçin.</span>
+                </div>
+                <div class="screenshot-step" data-step="4">
+                    <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios4.jpeg" alt="Adım 4">
+                    <span class="step-text">Adım 4: Sağ üst köşedeki "Ekle" butonuna basarak kurulumu tamamlayın.</span>
+                </div>
             </div>
-            <div class="screenshot-step" data-step="2">
-                <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios2.jpeg" alt="Adım 2">
-                <span class="step-text">Adım 2: Açılan menüyü yukarıya doğru kaydırın.</span>
-            </div>
-            <div class="screenshot-step" data-step="3">
-                <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios3.jpeg" alt="Adım 3">
-                <span class="step-text">Adım 3: Listeden "Ana Ekrana Ekle" seçeneğini bulun ve seçin.</span>
-            </div>
-            <div class="screenshot-step" data-step="4">
-                <img src="https://raw.githubusercontent.com/yemirtapan/fitssporcenter/refs/heads/main/ios4.jpeg" alt="Adım 4">
-                <span class="step-text">Adım 4: Sağ üst köşedeki "Ekle" butonuna basarak kurulumu tamamlayın.</span>
+            <div class="modal-nav-buttons">
+                <button id="prevStepBtn" class="nav-btn" disabled>Geri</button>
+                <button id="nextStepBtn" class="nav-btn next-btn">İleri</button>
             </div>
         </div>
 
-        <div class="modal-nav-buttons">
-            <button id="prevStepBtn" class="nav-btn" disabled>Geri</button>
-            <button id="nextStepBtn" class="nav-btn next-btn">İleri</button>
+        <div id="androidPanel" class="os-panel">
+            <div class="screenshot-container" style="min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                <span style="color:var(--text-muted); font-size:14px;">Android yükleme talimatları yakında eklenecektir.</span>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
 function switchLevel(levelId) {
-    document.querySelectorAll('.program-content').forEach(content => {
-        content.classList.remove('active');
-    });
-    document.querySelectorAll('.level-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
+    document.querySelectorAll('.program-content').forEach(content => content.classList.remove('active'));
+    document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById(levelId).classList.add('active');
-    if(window.event) window.event.currentTarget.classList.add('active');
+    
+    const activeBtn = Array.from(document.querySelectorAll('.level-btn')).find(btn => btn.getAttribute('onclick').includes(levelId));
+    if(activeBtn) activeBtn.classList.add('active');
 }
 
-// --- PÜRÜZSÜZ KAPANAN GELİŞMİŞ AKORDEON SCRIPT'İ ---
+// --- OS SEKME DEGISTIRICI ---
+function switchOS(osType) {
+    document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.os-panel').forEach(panel => panel.classList.remove('active'));
+    
+    if(osType === 'ios') {
+        document.getElementById('tabIosBtn').classList.add('active');
+        document.getElementById('iosPanel').classList.add('active');
+    } else if(osType === 'android') {
+        document.getElementById('tabAndroidBtn').classList.add('active');
+        document.getElementById('androidPanel').classList.add('active');
+    }
+}
+
+// --- AKORDEON ANİMASYON SCRIPT'İ ---
 document.querySelectorAll('details').forEach((el) => {
     const summary = el.querySelector('summary');
     const wrapper = el.querySelector('.exercise-wrapper');
 
     summary.addEventListener('click', (e) => {
         e.preventDefault(); 
-
         const currentContent = el.closest('.program-content');
         currentContent.querySelectorAll('details').forEach((openEl) => {
             if (openEl !== el && openEl.hasAttribute('open')) {
@@ -668,7 +499,7 @@ document.querySelectorAll('details').forEach((el) => {
     });
 });
 
-// --- MEDYA POPUP FONKSİYONU (.mp4 UYUMLU VİDEO SEÇİCİ) ---
+// --- MEDYA POPUP FONKSİYONU ---
 const gifModal = document.getElementById('gifPreviewModal');
 const mediaContainer = document.getElementById('modalMediaContainer');
 const modalExerciseName = document.getElementById('modalExerciseName');
@@ -681,24 +512,23 @@ document.querySelectorAll('.exercise').forEach(item => {
         const exerciseName = item.querySelector('.info h3').innerText;
         
         modalExerciseName.innerText = exerciseName;
-        
         if (mediaUrl) {
+            // Tıklanan video modalın içinde akıcı şekilde sıfırdan oynatılır
             mediaContainer.innerHTML = `<video src="${mediaUrl}" autoplay loop muted playsinline webkit-playsinline></video>`;
         }
-        
         gifModal.classList.add('open');
     });
 });
 
 function closeModalFunction() {
     gifModal.classList.remove('open');
+    // Modal kapatılınca internet kullanımını tamamen sıfırlar
     setTimeout(() => { mediaContainer.innerHTML = ""; }, 300); 
 }
-
 closeGifModal.addEventListener('click', closeModalFunction);
 gifModal.addEventListener('click', (e) => { if (e.target === gifModal) closeModalFunction(); });
 
-// --- INTERAKTIF ADIM YÖNETİMİ ---
+// --- INTERAKTIF ADIM YÖNETİMİ (iOS için) ---
 let currentStep = 1;
 const totalSteps = 4;
 const prevBtn = document.getElementById('prevStepBtn');
@@ -709,16 +539,10 @@ const modal = document.getElementById('installModal');
 function updateSteps() {
     steps.forEach(step => {
         step.classList.remove('active');
-        if(parseInt(step.getAttribute('data-step')) === currentStep) {
-            step.classList.add('active');
-        }
+        if(parseInt(step.getAttribute('data-step')) === currentStep) step.classList.add('active');
     });
     prevBtn.disabled = currentStep === 1;
-    if (currentStep === totalSteps) {
-        nextBtn.innerText = "Kapat";
-    } else {
-        nextBtn.innerText = "İleri";
-    }
+    nextBtn.innerText = currentStep === totalSteps ? "Kapat" : "İleri";
 }
 
 nextBtn.addEventListener('click', () => {
@@ -732,36 +556,21 @@ nextBtn.addEventListener('click', () => {
 });
 
 prevBtn.addEventListener('click', () => {
-    if (currentStep > 1) {
-        currentStep--;
-        updateSteps();
-    }
+    if (currentStep > 1) { currentStep--; updateSteps(); }
 });
 
-let deferredPrompt;
+// --- BANNER VE MODAL ACMA KONTROLLERİ ---
 const banner = document.getElementById('installBanner');
 const installBtn = document.getElementById('installBtn');
 const closeModalElement = document.getElementById('closeModal');
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    if(banner) banner.classList.add('show');
-});
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    if(banner) banner.style.display = 'none';
+}
 
 if(installBtn) {
     installBtn.addEventListener('click', () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    if(banner) banner.classList.remove('show');
-                }
-                deferredPrompt = null;
-            });
-        } else {
-            if(modal) modal.classList.add('open');
-        }
+        if(modal) modal.classList.add('open');
     });
 }
 
@@ -770,41 +579,6 @@ if(closeModalElement) {
         if(modal) modal.classList.remove('open');
     });
 }
-
-// --- SADECE EKRANDA GÖRÜNEN VİDEOYU OYNATMA (LAZY PLAYING / ANTI-FREEZE) ---
-document.addEventListener("DOMContentLoaded", function() {
-    const allVideos = document.querySelectorAll('.exercise video');
-    
-    // İlk açılışta donmayı engellemek için tüm liste videolarını duraklat (iOS ilk kareyi hafızaya alır)
-    allVideos.forEach(video => {
-        video.pause();
-    });
-
-    // Videoların ekrana girip çıkma durumunu izleyen Observer
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            
-            if (entry.isIntersecting) {
-                // Video ekrana tam girdiğinde oynat
-                video.play().catch(error => {
-                    console.log("Video otomatik oynatılamadı:", error);
-                });
-            } else {
-                // Videodan uzaklaşıldığında veya ekrandan çıktığında anında durdur (RAM kurtarır)
-                video.pause();
-            }
-        });
-    }, {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.5 // Videonun yarısı ekranda göründüğü an çalışmaya başlar
-    });
-
-    allVideos.forEach(video => {
-        videoObserver.observe(video);
-    });
-});
 </script>
 </body>
 </html>
