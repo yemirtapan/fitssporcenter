@@ -212,15 +212,16 @@ details[open] .exercise-wrapper { grid-template-rows: 1fr; }
 
 .gif-preview-close {
     position: absolute; 
-    top: -25px; 
-    right: 5px; 
-    font-size: 28px; 
+    top: 25px; 
+    right: 25px; 
+    font-size: 30px; 
     cursor: pointer; 
-    color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
     z-index: 12000;
     transition: color 0.2s ease;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.5);
 }
-.gif-preview-close:hover { color: #ffffff; }
+.gif-preview-close:hover { color: var(--primary-orange); }
 .pwa-modal-close { position: absolute; top: 15px; right: 20px; color: var(--text-muted); font-size: 28px; cursor: pointer; }
 
 .modal-image-wrapper { 
@@ -621,7 +622,7 @@ closeGifModal.addEventListener('click', () => {
 });
 
 gifModal.addEventListener('click', (e) => {
-    if (e.target === gifModal) {
+    if (e.target === gifModal || !e.target.closest('.gif-preview-content')) {
         gifModal.classList.remove('open');
         mediaContainer.innerHTML = '';
     }
